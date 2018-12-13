@@ -1228,7 +1228,7 @@ Spot why it fails (ie it does not die as expected)? Our regex to check a lone do
 
 And it reads (as per the <code>YAPE::Regex::Explain</code> output): any character except: '.' (1 or more times (matching the most amount possible)) followed by '.' (1 times) followed by any character except: '.' (1 or more times (matching the most amount possible)) 
 
-Which is simply not true for the given string <code>'.'</code> So we try changing both plus signs with question mark quantifiers in the regex: it does not help.As a wise monk named <a href="https://www.perlmonks.org/?node=haukex">haukex</a> explains, we need lookaround: <code>/(?&lt;!\.)\.(?!\.)/</code> will work! So we change the check in the module like follow: 
+Which is simply not true for the given string <code>'.'</code> So we try changing both plus signs with question mark quantifiers in the regex: it does not help.As a wise monk named <a href="https://www.perlmonks.org/?node=haukex">haukex</a> explains, we need lookaround: <code>/(?&lt;!\\.)\\.(?!\\.)/</code> will work! So we change the check in the module like follow: 
 
 <pre>
 # not allowed a lone .
