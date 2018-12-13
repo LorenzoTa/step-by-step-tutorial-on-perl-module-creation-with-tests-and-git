@@ -7,6 +7,8 @@ The code of the module presented is by choice extremely simple: I do not plan to
 
 By other hand every correction in the testing process, or in the git phase will be welcome.
 
+Markdown is not rended always as I intended (even if html is correct): it has some weird render in the [README.md](../README.md)
+
 Being english not my mother tongue language, any english correction will be welcome too.
 
 Transaltions will be gladly accepted.
