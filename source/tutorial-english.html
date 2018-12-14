@@ -265,7 +265,7 @@ Sharing early is a good principle: if you already have an idea of your module (e
 Plan it well: it is difficult, but remember that to repair something bad planned is always a worst task.
 The basic read is in the core documentation: <a href="http://perldoc.perl.org/index-language.html">perlnewmod</a> is the place to start and <a href="http://perldoc.perl.org/perlmodstyle.html">perlmodstyle</a> is what comes next. Dont miss the basic documentation. 
 
-If you want to read more see, in my <a href="https://www.perlmonks.org/index.pl?node_id=1202418#modules">bibliotheca</a>[, the scaffold dedicated to modules.
+If you want to read more see, in my <a href="https://www.perlmonks.org/index.pl?node_id=1202418#modules">bibliotheca</a>, the scaffold dedicated to modules.
 
 Choose carefully all your names: the module one and names of methods or functions your module exports: good code with bad named methods is many times unusable by others than the author.
 
