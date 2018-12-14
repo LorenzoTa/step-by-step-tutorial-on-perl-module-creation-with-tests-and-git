@@ -515,7 +515,7 @@ sub validate {
 
 1;
 
-\_\_DATA\_\_
+__DATA__
 
 =head1 NAME
 
