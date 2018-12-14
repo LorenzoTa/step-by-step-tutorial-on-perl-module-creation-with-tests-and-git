@@ -178,6 +178,9 @@
 		 <a href="#option three - the OO module">option three - the OO module</a>  
 	</li>
 	<li>
+		 <a href="#other testing modules">other testing modules</a>  
+	</li>
+	<li>
 		 <a href="#advanced Makefile.PL usage">advanced Makefile.PL usage</a>  
 	</li>
 	<li>
@@ -2176,7 +2179,14 @@ The file format is described in the documentation of <code>ExtUtils::MakeMaker</
 
 The 6.64 version of <code>ExtUtils::MakeMaker</code> was released in 2012 but you cannot be sure end users have some modern perl, so we can safely use <code>BUILD_REQUIRES</code> as always or use some logic to fallback to "older" functionality if <code>ExtUtils::MakeMaker</code> is too old. You can use <code>WriteMakefile1</code> sub used in the <code>Makefile.PL</code> of  <code>App::EUMM::Upgrade</code>
 
+<a name="other testing modules"></a>
+<h4>other testing modules</h4>
 
+In the current tutorial we used <code>Test::Exception</code> to test failures: consider also <code>Test::Fatal</code>
+
+Overkill for simple test case but useful for complex one is the module  <a href="https://metacpan.org/pod/Test::Class">Test::Class</a>
+
+Other modules worth to see are in the <a href="https://metacpan.org/pod/Task::Kensho#Task::Kensho::Testing:-Testing">Task::Kensho</a> list.
 
 	
 <a name="advanced testing code"></a>
