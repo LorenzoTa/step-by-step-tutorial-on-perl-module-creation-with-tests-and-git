@@ -237,7 +237,7 @@ But here in this tutorial we'll use  <code>git</code> in the command line and <a
 
 This tutorial will focus on the importance (I'd say preminence or even predominance) of testing while developing a perl module. I wrote lonely scripts for years then I realized that even if my script seemed robust, I have no way to test them in a simple and reliable way.
 
-So we will use the core module ?Test::More? and the CPAN one Test::Exception in our module so get it installed using your <code>cpan</code> or <code>cpanm</code> client. Take a look to <a href="http://perldoc.perl.org/Test/Simple.html">Test::Simple</a> if you are not used to test.
+So we will use the core module <a href="http://perldoc.perl.org/Test/More.html">Test::More</a> and the CPAN one Test::Exception in our module so get it installed using your <code>cpan</code> or <code>cpanm</code> client. Take a look to <a href="http://perldoc.perl.org/Test/Simple.html">Test::Simple</a> if you are not used to test.
 
 We also use the core module <a href="http://perldoc.perl.org/Carp.html">Carp</a> to report errors from user point of view.
 
