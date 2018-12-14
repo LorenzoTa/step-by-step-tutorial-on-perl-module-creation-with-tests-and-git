@@ -221,7 +221,7 @@
 This tutorial is not about coding: that's it! The code, idea and implementation presented below
 are, by choice, futile, piffling and trifling ( the module resulting following this tutorial is available, archived <a href="https://github.com/LorenzoTa/Range-Validator">on its own repository</a>).
 
-This tutorial, by other hands, try to show to the beginner one possible path in module creation. As always in perl there are many ways to get the job done and mine is far to be the optimal one, but as
+This tutorial, by other hands, tries to show to the beginner one possible path in module creation. As always in perl there are many ways to get the job done and mine is far to be the optimal one, but as
 I have encountered many difficulties to choice my own path, perhaps sharing my way can help someone else.
 
 There are other similar but different source of knowledge about module creation, notably <a href="https://www.perlmonks.org/index.pl?node_id=431702">José's Guide for creating Perl modules</a>: read this for some point i do not explore (well, read it anyway: it's worth to)
