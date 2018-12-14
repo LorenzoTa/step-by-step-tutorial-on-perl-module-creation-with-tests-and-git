@@ -2214,8 +2214,8 @@ use t::testhelper;
 
 </pre>
 
-<a name="bibliography"><h2>bibliography</h2></a>
-
+<a name="bibliography"></a>
+<h2>bibliography</h2>
 <a name="CORE documentation about modules"></a>
 <h4>CORE documentation about modules</h4>
 
