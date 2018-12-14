@@ -270,7 +270,7 @@ Choose carefully all your names: the module one and names of methods or function
 Programming is a matter of interfaces. sic. dot. Coding is easy engineering is hard. sic. another dot.
 You can change a million of times the implementation, you can never change how other people use your code. So plan well what you offer with your module. You can add in the future new features; you cannot remove not even one of them because someone is already using it in production. Play nice: plan well.
 
-You can profit the read of a wonderful post by our theoric of theories <a href="https://www.perlmonks.org/index.pl?node_id=176576">eyepopslikeamosquito</a> who wrote <a href="https://www.perlmonks.org/index.pl?node_id=553487">
+You can profit the read of a wonderful post <a href="https://www.perlmonks.org/index.pl?node_id=553487">
 On Interfaces and APIs</a>
 
 
@@ -1228,7 +1228,7 @@ Spot why it fails (ie it does not die as expected)? Our regex to check a lone do
 
 And it reads (as per the <code>YAPE::Regex::Explain</code> output): any character except: '.' (1 or more times (matching the most amount possible)) followed by '.' (1 times) followed by any character except: '.' (1 or more times (matching the most amount possible)) 
 
-Which is simply not true for the given string <code>'.'</code> So we try changing both plus signs with question mark quantifiers in the regex: it does not help.As a wise monk named <a href="https://www.perlmonks.org/?node=haukex">haukex</a> explains, we need lookaround: <code>/(?&lt;!\\.)\\.(?!\\.)/</code> will work! So we change the check in the module like follow: 
+Which is simply not true for the given string <code>'.'</code> So we try changing both plus signs with question mark quantifiers in the regex: it does not help. As a wise friend explains, we need lookaround: <code>/(?&lt;!\\.)\\.(?!\\.)/</code> will work! So we change the check in the module like follow: 
 
 <pre>
 # not allowed a lone .
