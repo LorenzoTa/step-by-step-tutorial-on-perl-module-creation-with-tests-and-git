@@ -495,9 +495,9 @@ A whole day is passed, well.. two days, and we did not wrote a single line of pe
 <a id="daytwostep1"></a>
 <h4>step 1) POD documentation</h4> 
 
-Well first of all some cleaning: open you local copy of the module <code>/path/to/Range-Validator/lib/Range/Validator.pm</code> in your text editor or IDE. Personally  I like the POD documentation to be all together after the <code>__DATA__</code> token rather interleaved with the code. Inside the code I only like to have comments. POD documentation is for the user, comments are for you! After a week or month you'll never remember what your code is doing: comment it explaining what is passing.
+Well first of all some cleaning: open you local copy of the module <code>/path/to/Range-Validator/lib/Range/Validator.pm</code> in your text editor or IDE. Personally  I like the POD documentation to be all together after the <code>\_\_DATA\_\_</code> token rather interleaved with the code. Inside the code I only like to have comments. POD documentation is for the user, comments are for you! After a week or month you'll never remember what your code is doing: comment it explaining what is passing.
 
-So go to the end of the module where the line is the final <code>1;</code> ( remember all modules must have a true return value as last statement) and place, in a new line the <code>__DATA__</code> token. Move all POD after the token. Also cancel the POD and the code relative to <code>function2</code>
+So go to the end of the module where the line is the final <code>1;</code> ( remember all modules must have a true return value as last statement) and place, in a new line the <code>\_\_DATA\_\_</code> token. Move all POD after the token. Also cancel the POD and the code relative to <code>function2</code>
 
 Then rename <code>function1</code> into <code>validate</code> and change accordingly the name of the POD section too.
 
@@ -1074,7 +1074,7 @@ This function accepts a string or a list (range) and returns an array.
 In the string form the accepted characters are: positive integers, dots, commas and spaces. Every space will be removed.
 
 </pre>
-We do not need <code>=cut</code> anymore because we do not have POD in blocks interleaved with the code, but an unique POD block in the <code>__DATA__</code> section.
+We do not need <code>=cut</code> anymore because we do not have POD in blocks interleaved with the code, but an unique POD block in the <code>\_\_DATA\_\_</code> section.
 
 
 
