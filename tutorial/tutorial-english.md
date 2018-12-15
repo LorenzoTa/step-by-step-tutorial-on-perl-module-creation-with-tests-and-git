@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>
-		Discipulus's step by step tutorial on module creation with tests and git
-	</title>
+	
 </head>
 <body>
 <h1>Discipulus's step by step tutorial on module creation with tests and git</h1>
@@ -2314,7 +2312,6 @@ use t::testhelper;
 <ul>
 	<li>
 		 http://modernperlbooks.com/books/modern_perl_2016/09-managing-real-programs.html
-
 	</li>
 	<li>
 		 http://shop.oreilly.com/product/9780596100926.do
