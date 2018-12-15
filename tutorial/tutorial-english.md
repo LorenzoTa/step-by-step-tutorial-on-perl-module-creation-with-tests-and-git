@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	
+	<title>
+		Discipulus's step by step tutorial on module creation with tests and git
+	</title>
 </head>
 <body>
 <h1>Discipulus's step by step tutorial on module creation with tests and git</h1>
@@ -893,7 +895,7 @@ By other hand <code>PREREQ_PM</code> lists modules and their minimal versions ne
 
 Even if <code>Carp</code> it's a core module is a good practice to include it into <code>PREREQ_PM</code> 
 
-Read a very good post by <a href="https://www.perlmonks.org/?node_id=281137">davido</a> about dependencies <a href="https://www.perlmonks.org/?node_id=946044">Re: How to specify tests dependencies with Makefile.PL?</a>
+Read a very good post about dependencies <a href="https://www.perlmonks.org/?node_id=946044">Re: How to specify tests dependencies with Makefile.PL?</a>
 
 Cleaning example lines and given all the above, we will modify <code>Makefile.PL</code> as follow:
 
@@ -2333,7 +2335,7 @@ use t::testhelper;
 <h2>acknowledgements</h2>
 
 As all my works the present tutorial would be not possible without the help of the perlmonks.org community.
-Not being an exhaustive list I want to thanks: Corion, choroba, Tux, 1nickt, marto, hippo, haukex, Eily, eyepopslikeamosquito and kschwab (to be updated ;)
+Not being an exhaustive list I want to thanks: Corion, choroba, Tux, 1nickt, marto, hippo, haukex, Eily, eyepopslikeamosquito, davido and kschwab (to be updated ;)
 
 </body>
 </html>
