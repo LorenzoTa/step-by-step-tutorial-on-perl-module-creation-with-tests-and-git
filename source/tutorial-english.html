@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+	<title>
+		Discipulus's step by step tutorial on module creation with tests and git
+	</title>
+</head>
 <body>
 <h1>Discipulus's step by step tutorial on module creation with tests and git</h1>
 
@@ -203,7 +208,7 @@
 		 <a href="#furtherreadingsaboutmodules">further readings about modules</a>  
 	</li>
 	<li>
-		 <a href="#furtherreadingsabouttesting">further readings about testing	
+		 <a href="#furtherreadingsabouttesting">further readings about testing</a>	
 	</li>
 </ul>
 
@@ -212,12 +217,12 @@
 
 
 	
-<a name="dayzero"></a>
+<a id="dayzero"></a>
 <h2>day zero: introduction</h2>
 
 
 
-<a name="foreword"></a>
+<a id="foreword"></a>
 <h4>foreword</h4>
 
 This tutorial is not about coding: that's it! The code, idea and implementation presented below
@@ -230,7 +235,7 @@ There are other similar but different source of knowledge about module creation,
 
 
 
-<a name="thebagoftools"></a>
+<a id="thebagoftools"></a>
 <h4>the bag of tools</h4>
 
 As for every duty, check your equipment before starting. You probably already have perl, a shell (or something less fortunate if you are on windows, like me ;) and a favourite text editor or IDE.
@@ -249,7 +254,7 @@ We'll document our module using POD (Plain Old Documentation) see <a href="https
 
 
 
-<a name="theplan"></a>
+<a id="theplan"></a>
 <h4>the plan</h4>
 
 
@@ -283,16 +288,16 @@ On Interfaces and APIs</a>
 
 
 
-<a name="dayone"></a>
+<a id="dayone"></a>
 <h2>day one: prepare the ground</h2>
 
 
-<a name="dayonestep1"></a>
+<a id="dayonestep1"></a>
 <h4>step 1) an online repository on github</h4> 
 
 Create an empty repository on the github server named Range-Validator (they do not accept <code>::</code> in names) see <a href="https://help.github.com/articles/creating-a-new-repository/">here for instruction</a>
 
-<a name="dayonestep2"></a>
+<a id="dayonestep2"></a>
 <h4>step 2) a new module with module-starter</h4>
 
 Open a shell to your scripts location and run the program <code>module-starter</code> that comes within <code>Module::Starter</code> It wants a  mail address, the author name and, obviously the module name:
@@ -345,7 +350,7 @@ We now have a good starting point to work on. Spend some minute to review the co
 
 
 
-<a name="dayonestep3"></a>
+<a id="dayonestep3"></a>
 <h4>step 3) a local repository with git</h4> 
 
 Open another shell for the git client (I prefer to have two, feel free to use just one) to the same path of the above created folder and initialize a git repository (local for the moment) there:
@@ -368,7 +373,7 @@ On branch master
 No commits yet
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use "git add &lt;file&gt;..." to include in what will be committed)
 
         Changes
         MANIFEST
@@ -397,7 +402,7 @@ On branch master
 No commits yet
 
 Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
+  (use "git rm --cached &lt;file&gt;..." to unstage)
 
         new file:   Changes
         new file:   MANIFEST
@@ -485,11 +490,11 @@ A whole day is passed, well.. two days, and we did not wrote a single line of pe
 
 
 
-<a name="daytwo"></a>
+<a id="daytwo"></a>
 <h2>day two: some change and tests</h2>
 
 
-<a name="daytwostep1"></a>
+<a id="daytwostep1"></a>
 <h4>step 1) POD documentation</h4> 
 
 Well first of all some cleaning: open you local copy of the module <code>/path/to/Range-Validator/lib/Range/Validator.pm</code> in your text editor or IDE. Personally  I like the POD documentation to be all together after the <code>__DATA__</code> token rather interleaved with the code. Inside the code I only like to have comments. POD documentation is for the user, comments are for you! After a week or month you'll never remember what your code is doing: comment it explaining what is passing.
@@ -549,7 +554,7 @@ Ok? Let's check our new POD is correct: open the shell in the directory created 
 Review the POD. It must be ok. 
 
 
-<a name="daytwostep2"></a>	
+<a id="daytwostep2"></a>	
 <h4>step 2) first test</h4> 
 
 Now we test if the module syntax is correct. The first simple method is a short one liner using the perl option <code> -I </code> to include <code>./lib</code> in <code>@INC</code> and <code> -MRange::Validator </code> to use our module( see <a href="https://perldoc.perl.org/perlrun.html">
@@ -653,7 +658,7 @@ Result: PASS
 
 
 
-<a name="daytwostep3"></a>
+<a id="daytwostep3"></a>
 <h4>step 3) commit changes with git</h4> 
 
 Ok we have done some change to the code base, small ones but changes. Wich changes? I'm lazy and I do not remember all files we modified. No problem <code>git</code> will tell us. At least I remember which command I need to review the coed base status: <code>git status</code>
@@ -665,8 +670,8 @@ git-client> git status
 
 On branch master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
         modified:   lib/Range/Validator.pm
         modified:   t/00-load.t
@@ -695,7 +700,7 @@ nothing to commit, working tree clean
 
 
 
-<a name="daytwostep4"></a>
+<a id="daytwostep4"></a>
 <h4>step 4) pushing to github repository</h4> 
 
 Ok we submitted, well committed, all changes made. What's next? We have to synchronize the online repository that we named <code>YourGithubLogin</code> so check it and push modified content to it:
@@ -733,11 +738,11 @@ I vaguely recall a chinese motto: "when you start something, start from the oppo
 
 
 
-<a name="daythree"></a>	
+<a id="daythree"></a>	
 <h2>day three: finally some code</h2>
 
 
-<a name="daythreestep1"></a>		
+<a id="daythreestep1"></a>		
 <h4>step 1) first lines of code</h4> 
 
 It's time to put some code inside our <code>validate</code> subroutine. We plan to accept both a string like <code>'1..3,5'</code> and a pure range like <code>1..5,6</code> but let's start with string form assuming only one element will be passed to our sub via <code>@_</code>
@@ -777,7 +782,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use Carp;									# <--- new line
+use Carp;									# --- new line
 
 our $VERSION = '0.01';
 
@@ -793,12 +798,12 @@ sub validate{
 		...
 	}
 	# remove any space from string
-	$range =~ s/\s+//g;						# <--- new line
+	$range =~ s/\s+//g;						# --- new line
 	# die if invalid characters
 	croak "invalid character passed in string [$range]!" 
-			if $range =~ /[^\s,.\d]/;		# <--- new line
+			if $range =~ /[^\s,.\d]/;		# --- new line
 	
-	@range = eval ($range);					# <--- new line
+	@range = eval ($range);					# --- new line
 	return @range;
 }
 
@@ -807,7 +812,7 @@ sub validate{
 
 
 
-<a name="daythreestep2"></a>	
+<a id="daythreestep2"></a>	
 <h4>step 2) testing on our own</h4> 
 
 How to see if all works as expected? Obviously with a test. Not <code>00-load.t</code> but a new one dedicated to the <code>validate</code> sub. So go into the <code>t</code> folder and create a new file <code>01-validate.t</code> and open it to edit the content.
@@ -846,7 +851,7 @@ Dependencies list? What is that? Where we spoke about this? Never, until now.
 
 
 
-<a name="daythreestep3"></a>
+<a id="daythreestep3"></a>
 <h4>step 3) add dependencies in Makefile.PL</h4> 
 
 Infact the program <code>module-starter</code> used in day one created a file called <code>Makefile.PL</code> with the following default content:
@@ -859,7 +864,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME             => 'Range::Validator',
-    AUTHOR           => q{MyName <MyName@cpan.org>},
+    AUTHOR           => q{MyName &lt;MyName@cpan.org&gt;},
     VERSION_FROM     => 'lib/Range/Validator.pm',
     ABSTRACT_FROM    => 'lib/Range/Validator.pm',
     LICENSE          => 'artistic_2',
@@ -902,7 +907,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME             => 'Range::Validator',
-    AUTHOR           => q{MyName <MyName@cpan.org>},
+    AUTHOR           => q{MyName &lt;MyName@cpan.org&gt;},
     VERSION_FROM     => 'lib/Range/Validator.pm',
     ABSTRACT_FROM    => 'lib/Range/Validator.pm',
     LICENSE          => 'artistic_2',
@@ -913,10 +918,10 @@ WriteMakefile(
     },
     BUILD_REQUIRES => {
         'Test::More' => '0',
-		'Test::Exception' => '0',	# <--- new line
+		'Test::Exception' => '0',	# --- new line
     },
     PREREQ_PM => {
-        'Carp'	=> '0',				# <--- new line
+        'Carp'	=> '0',				# --- new line
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Range-Validator-*' },
@@ -926,7 +931,7 @@ So the moral is: when you add a dependency needed to run your module or to test 
 
 
 
-<a name="daythreestep4"></a>
+<a id="daythreestep4"></a>
 <h4>step 4) run the new test</h4> 
 Ok, is the above test ok? It returns all we expect? Try it using <code>prove -l</code> but specifying also <code>-v</code> to be verbose and the filename of our new test (now we dont want all test run, just the one we are working on):
 
@@ -947,7 +952,7 @@ Result: PASS
 </pre>
 
 
-<a name="daythreestep5"></a>
+<a id="daythreestep5"></a>
 <h4>step 5) commit, add new files and push with git</h4> 
 
 What we need more from our first day of coding? To check our status and to synchronize our online repository (pay attention to the following commands because we have a new, untracked file!):
@@ -957,14 +962,14 @@ git-client> git status
 
 On branch master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
         modified:   Makefile.PL
         modified:   lib/Range/Validator.pm
 
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use "git add &lt;file&gt;..." to include in what will be committed)
 
         t/01-validate.t
 
@@ -986,7 +991,7 @@ git-client> git status
 
 On branch master
 Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
+  (use "git reset HEAD &lt;file&gt;..." to unstage)
 
         new file:   t/01-validate.t
 
@@ -1030,11 +1035,11 @@ What a day! We added six lines of code and an entire test file! Are we programmi
 
 
 
-<a name="dayfour"></a>
+<a id="dayfour"></a>
 <h2>day four: the PODist and the coder</h2>
 
 
-<a name="dayfourstep1"></a>
+<a id="dayfourstep1"></a>
 <h4>step 1) the educated documentation</h4> 
 
 We get up in the morning and we suddenly realize yesterday we forgot something very important: documentation!
@@ -1076,7 +1081,7 @@ We do not need <code>=cut</code> anymore because we do not have POD in blocks in
 
 
 
-<a name="dayfourstep2"></a>
+<a id="dayfourstep2"></a>
 <h4>step 2) git status again and commit again</h4> 
 
 Since we are now very fast with <code>git</code> commands, let's <code>commit</code> this little change; the <code>push</code> to the remote repository can be left for the end of work session. So <code>status</code> (check it frequently!) and <code>commit</code>
@@ -1086,8 +1091,8 @@ git-client> git status
 
 On branch master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
         modified:   lib/Range/Validator.pm
 
@@ -1103,7 +1108,7 @@ git-client> git commit -a -m "initial POD to document validate function"
 
 
 
-<a name="dayfourstep3"></a>
+<a id="dayfourstep3"></a>
 <h4>step 3) more code...</h4> 
 
 Now it's time to add more checks for the incoming string: we do not accept a lone dot between non dots, nor even more than two dots consecutively:
@@ -1146,7 +1151,7 @@ sub validate{
 </pre>
 
 
-<a name="dayfourstep4"></a>
+<a id="dayfourstep4"></a>
 <h4>step 4) ...means more and more tests</h4> 
 
 Now it is time to test this behaviour. Go edit <code>./t/01-validate.t</code> adding (append the following code to the end of the test file) some <code>dies_ok</code> statements preceded by a <code>note</code>:
@@ -1356,7 +1361,7 @@ foreach my $newstring ( '1...3', '1,3...5','...', '1...', '...2' ){
 
 
 
-<a name="dayfourstep5"></a>
+<a id="dayfourstep5"></a>
 <h4>step 5) git: a push for two commits</h4> 
 Time to review the status of the local repository, commit changes and push it online:
 
@@ -1365,8 +1370,8 @@ git-client> git status
 
 On branch master
 Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
+  (use "git add &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
 
         modified:   lib/Range/Validator.pm
         modified:   t/01-validate.t
@@ -1408,11 +1413,11 @@ Go to the online repository, Insights, Network: the last two dots on the line se
 
 
 
-<a name="dayfive"></a>
+<a id="dayfive"></a>
 <h2>day five: deeper tests</h2>
 
 
-<a name="dayfivestep1"></a>
+<a id="dayfivestep1"></a>
 <h4>step 1) more validation in the code</h4>
 
 Today we plan to add two new validations in our sub: first one intended to be used against ranges passed in string form, the second to all ranges, before returning them.
@@ -1438,9 +1443,9 @@ So, just before returning from the sub, we simply use a hash to have unique elem
 	# eval the range
 	@range = eval ($range);
 	# remove duplicate elements using a hash
-	my %single = map{ $_ => 1} @range;			# <-- new line
+	my %single = map{ $_ => 1} @range;			# -- new line
 	# sort unique keys numerically
-	@range = sort{ $a <=> $b } keys %single;	# <-- new line
+	@range = sort{ $a &lt;=&gt; $b } keys %single;	# -- new line
 	return @range;
 
 </pre>
@@ -1481,7 +1486,7 @@ sub validate{
 	# remove duplicate elements using a hash
 	my %single = map{ $_ => 1} @range;
 	# sort unique keys numerically
-	@range = sort{ $a <=> $b } keys %single;
+	@range = sort{ $a &lt;=&gt; $b } keys %single;
 	return @range;
 }
 
@@ -1491,7 +1496,7 @@ New features are worth to be pushed on the online repository: you know how can b
 
 
 
-<a name="dayfivestep2"></a>
+<a id="dayfivestep2"></a>
 <h4> step 2) a git excursus</h4>
 
 Did you follow my small advices about git committing and meaningful messages? If so it's time to see why is better to be diligent: with <code>git log</code> (which man page is probably longer than this guide..) you can review a lot about previous activities:
@@ -1515,7 +1520,7 @@ As you can understand git is a vaste world: explore it to suit your needs. This 
 
 
 
-<a name="dayfivestep3"></a>
+<a id="dayfivestep3"></a>
 <h4> step 3) add deeper tests</h4>
 
 Until now we used a limited test arsenal: <code>ok</code> from <code>Test::Simple</code> <code>use_ok</code> and <code>note</code> from <code>Test::More</code> <code>dies_ok</code> from <code>Test::Exception</code>
@@ -1574,7 +1579,7 @@ Commit.
 
 
 
-<a name="dayfivestep4"></a>	
+<a id="dayfivestep4"></a>	
 <h4> step 4) who is ahead? git branches and log </h4>
 
 Just at glance: up to you to explore this topic. Look at the following git session of commands, two commands ( one that we never used until now) just before and reissued just after the push:
@@ -1645,7 +1650,7 @@ git-client> git show-branch *master
 
 
 
-<a name="dayfivestep5"></a>
+<a id="dayfivestep5"></a>
 <h4> step 5) overall check and release</h4>
 
 We just need some small change and our module will be ready for production. We left some part of our code behind and precisely the <code>else</code> part dedicated to incoming arrays:
@@ -1693,7 +1698,7 @@ sub validate{
 	# remove duplicate elements using a hash
 	my %single = map{ $_ => 1} @range;
 	# sort unique keys numerically
-	@range = sort{ $a <=> $b } keys %single;
+	@range = sort{ $a &lt;=&gt; $b } keys %single;
 	return @range;
 }
 
@@ -1707,7 +1712,7 @@ Add to the POD of our sub:
 <pre>
 Every string with occurences of a lone dot or more than two dots will be rejected causing an exception in the calling program.
 
-Reverse ranges like in C<'3..1'> passed as string will also cause an exception.
+Reverse ranges like in <code>'3..1'</code> passed as string will also cause an exception.
 
 In both string and list form any duplicate element (overlapped range) will be silently removed. Any form of unordered list will be silently rerodered.
 
@@ -1717,7 +1722,7 @@ Check git status and commit. Use <code>git log HEAD --oneline</code> to see that
 
 
 
-<a name="dayfivestep6"></a>
+<a id="dayfivestep6"></a>
 <h4>step 6) test list form</h4>
 
 Even if it is simpler we have to test the array form of our sub. We can use this time an array of tests each element being another array with two elements: first the list we pass to the sub, then the list we expect back from the sub. Again using <code>is_deeply</code> is a good choice:
@@ -1755,11 +1760,11 @@ As always, commit the change with a meaningful comment and push this important s
 
 
 
-<a name="daysix"></a>
+<a id="daysix"></a>
 <h2>day six: testing STDERR</h2>
 
 
-<a name="daysixstep1"></a>
+<a id="daysixstep1"></a>
 <h4>step 1) the problem of empty lists</h4>
 
 Our assumptions, in "day zero - the plan", were to accept only ordered, not overlapped lists or their string representations. Other software in the project (again: a fictional scenario), where our validation module is used, blindly pass what received from outside (many different sources) to our <code>validate</code> sub. With the output produced by our sub many other subs or methods are called. All these software (out of our control) assume that, if an empty list is received then ALL elements are processed. This seemed the right thing to do.
@@ -1810,7 +1815,7 @@ B - Yeah man, for a coffee, as always.
 
 
 
-<a name="daysixstep2"></a>	
+<a id="daysixstep2"></a>	
 <h4>step 2) adding a Carp to the lake</h4>
 
 So we add a line in the top of the module, just after VERSION: <code>our $WARNINGS = 0;</code> to let dev B to trigger our warnings. We commit even this small change.
@@ -1838,7 +1843,7 @@ Git status, git commit on your own.
 
 
 
-<a name="daysixstep3"></a>	
+<a id="daysixstep3"></a>	
 <h4>step 3) prepare the fishing road: add a dependency for our test</h4>
 
 To grab <code>STDERR</code> in test we have to add a dependency to <code>Capture::Tiny</code> module which is able, with its method <code>capture</code> to catch  <code>STDOUT</code>  <code>STDERR</code> and  results emitted by an external command or a chunk of perl code. Handy and tiny module.
@@ -1849,7 +1854,7 @@ Do you remeber the place to specify a dependency? Bravo! Is in <code>Makefile.PL
 BUILD_REQUIRES => {
         'Test::More' 		=> '0',
 		'Test::Exception' 	=> '0',
-		'Capture::Tiny'   	=> '0',		# <-- new line
+		'Capture::Tiny'   	=> '0',		# -- new line
     },
 
 </pre>
@@ -1859,7 +1864,7 @@ Commit this change.
 
 
 
-<a name="daysixstep4"></a>	
+<a id="daysixstep4"></a>	
 <h4>step 4) go fishing the Carp in our test</h4>
 
 Now in <code>01-validate.t</code> test file we first add the module with <code>use Capture::Tiny qw(capture)</code> and then, at the end we add some test of the warning behaviour:
@@ -1902,7 +1907,7 @@ You - I dont want! A coffee is waiting  for you. Thanks!
 
 
 
-<a name="daysixstep5"></a>
+<a id="daysixstep5"></a>
 <h4>step 5) document the new warning feature</h4>
 
 Add some POD,few lines are better than nothing, to the module documentation:
@@ -1910,7 +1915,7 @@ Add some POD,few lines are better than nothing, to the module documentation:
 <pre>
 =head1 ENABLE WARNINGS
 
-If the C<$Range::Validator::WARNINGS> is set to a true value then an empty list passed to C<validate> will provoke a warning from the caller perspective.
+If the <code>$Range::Validator::WARNINGS</code> is set to a true value then an empty list passed to <code>validate</code> will provoke a warning from the caller perspective.
 
 </pre>
 Commit this change and update the online repository.
@@ -1919,18 +1924,18 @@ Commit this change and update the online repository.
 
 
 
-<a name="dayseven"></a>
+<a id="dayseven"></a>
 <h2>day seven: the module is done but not ready</h2>
 
 
-<a name="daysevenstep1"></a>
+<a id="daysevenstep1"></a>
 <h4>step 1) sharing</h4>
 
 As stated in "day zero - the plan" sharing early is a good principle: can be worth to ask in a forum dedicated to Perl (like <a href="https://perlmonks.org">perlmonks.org</a>) posting a RFC post (Request For Comments) or using  the dedicated website <a href="http://prepan.org/">http://prepan.org/</a> to collect suggestions about your module idea and implementation. 
 
 
 
-<a name="daysevenstep2"></a>	
+<a id="daysevenstep2"></a>	
 <h4>step 2) files in a CPAN distribution</h4>
 
 Your module is ready to be used and it is already used, but is not installable by a CPAN client nor can be indexed by a CPAN indexer at the moment. Read the short but complete description of possible files at <a href="https://www.perlmonks.org/index.pl?node_id=1009586">What are the files in a CPAN distribution?</a>
@@ -1941,7 +1946,7 @@ Following tests are not needed to install or use your module but to help you spo
 
 
 
-<a name="daysevenstep3"></a>	
+<a id="daysevenstep3"></a>	
 <h4>step 3) another kind of test: MANIFEST</h4>
 
 
@@ -2034,7 +2039,7 @@ Push recent changes into the online repository.
 
 
 
-<a name="daysevenstep4"></a>
+<a id="daysevenstep4"></a>
 <h4>step 4) another kind of test: POD and POD coverage</h4>
 
 In our <code>/t</code> folder we still have two tests we did not run: shame! <code>module-starter</code> created for us <code>pod.t</code> and <code>pod-coverage.t</code> The first one checks every POD in our distribution has no errors and the second ensures that all relevant files in your distribution are appropriately documented in POD documentation. Thanks for this. Run them:
@@ -2067,7 +2072,7 @@ Result: PASS
 
 
 	
-<a name="daysevenstep5"></a>
+<a id="daysevenstep5"></a>
 <h4>step 5) some README and final review of the work</h4>
 
 The <code>README</code> must contain some general information about the module. Users can read this file via <code>cpan</code> client so put a minimal description in it. Gihub website use it as default page, so it is useful have some meningful text. Someone generates the text from the POD section of the module. Put a short description, maybe the sysnopsis and commit the change. Push it online.
@@ -2110,7 +2115,7 @@ A good glance of two dozens of commits! We have done a good job, even if with so
 
 
 
-<a name="daysevenstep6"></a>
+<a id="daysevenstep6"></a>
 <h4>step 6) try a real CPAN client installation</h4>
 
 It's now time to see if our module can be installaed by a cpan client. Nothing easier: if you are in the module folder just run <code>cpan .</code> and enjoy the output (note that this command will modify the content of the directory!).
@@ -2119,10 +2124,10 @@ It's now time to see if our module can be installaed by a cpan client. Nothing e
 
 
 
-<a name="dayeight"></a>
+<a id="dayeight"></a>
 <h2>day eight: other module techniques</h2>
 
-<a name="dayeightoptionone"></a>
+<a id="dayeightoptionone"></a>
 <h4>option one - the bare bone module</h4>
 
 This is option we choosed for the above example and, even if it is the less favorable one, we used this form for the extreme easy. The module is just a container of subs and all subs are available in the program tha uses our module but only using their fully qualified name, ie including the name space where they are defined: <code>Range::Validator::validate</code> was the syntax we used all over the tutorial.
@@ -2132,7 +2137,7 @@ Nothing bad if the above behaviour is all you need.
 
 
 
-<a name="dayeightoptiontwo"></a>
+<a id="dayeightoptiontwo"></a>
 <h4>option two - the Exporter module</h4>
 
 If you need more control over what to be available to the end user of your module <code>Exporter</code> CORE module will be a better approach.
@@ -2147,7 +2152,7 @@ Perl is not restrictive in any meaning of the word: nothing will prevent the end
 
 
 	
-<a name="dayeightoptionthree"></a>
+<a id="dayeightoptionthree"></a>
 <h4>option three - the OO module</h4>
 
 Preferred by many is the Object Oriented (OO) way. OO it's not better nor worst: it's a matter of aptitude or a matter of needs. See the relevant section on the core documentation: <a href="http://perldoc.perl.org/perlmodstyle.html#To-OO-or-not-to-OO%3f ">To-OO-or-not-OO?</a> about the choice.
@@ -2172,7 +2177,7 @@ An OO module has many advantages in particular situations but is generally a bit
 
 
 	
-<a name="dayeightadvancedMakefile.PLusage"></a>
+<a id="dayeightadvancedMakefile.PLusage"></a>
 <h4>advanced Makefile.PL usage</h4>
 
 Until now we modified the <code>BUILD_REQUIRES</code> to specify dependencies needed while testing our module and <code>PREREQ_PM</code> to include modules needed by our module to effectively run.
@@ -2181,7 +2186,7 @@ The file format is described in the documentation of <code>ExtUtils::MakeMaker</
 
 The 6.64 version of <code>ExtUtils::MakeMaker</code> was released in 2012 but you cannot be sure end users have some modern perl, so we can safely use <code>BUILD_REQUIRES</code> as always or use some logic to fallback to "older" functionality if <code>ExtUtils::MakeMaker</code> is too old. You can use <code>WriteMakefile1</code> sub used in the <code>Makefile.PL</code> of  <code>App::EUMM::Upgrade</code>
 
-<a name="dayeightothertestingmodules"></a>
+<a id="dayeightothertestingmodules"></a>
 <h4>other testing modules</h4>
 
 In the current tutorial we used <code>Test::Exception</code> to test failures: consider also <code>Test::Fatal</code>
@@ -2191,7 +2196,7 @@ Overkill for simple test case but useful for complex one is the module  <a href=
 Other modules worth to see are in the <a href="https://metacpan.org/pod/Task::Kensho#Task::Kensho::Testing:-Testing">Task::Kensho</a> list.
 
 	
-<a name="dayeightadvancedtestingcode"></a>
+<a id="dayeightadvancedtestingcode"></a>
 <h4>advanced testing code</h4>
 
 If in your tests you have the risk of code repetition (against the DRY - Dont Repeat Yourself principle) you can find handy to have a module only used in your tests, a module under the <code>/t</code> folder. 
@@ -2216,10 +2221,10 @@ use t::testhelper;
 
 </pre>
 
-<a name="bibliography"></a>
+<a id="bibliography"></a>
 <h2>bibliography</h2>
 
-<a name="COREdocumentationaboutmodules"></a>
+<a id="COREdocumentationaboutmodules"></a>
 <h4>CORE documentation about modules</h4>
 
 
@@ -2243,7 +2248,7 @@ use t::testhelper;
 
 
 
-<a name="COREdocumentationabouttesting"></a>
+<a id="COREdocumentationabouttesting"></a>
 <h4>CORE documentation about testing</h4>
 
 <ul>
@@ -2270,7 +2275,7 @@ use t::testhelper;
 
 
 
-<a name="furtherreadingsaboutmodules"></a>	
+<a id="furtherreadingsaboutmodules"></a>	
 <h4>further readings about modules</h4>
 
 <ul>
@@ -2304,7 +2309,7 @@ use t::testhelper;
 </ul>
 
 
-<a name="furtherreadingsabouttesting"></a>
+<a id="furtherreadingsabouttesting"></a>
 <h4>further readings about testing</h4>
 <ul>
 	<li>
@@ -2326,7 +2331,7 @@ use t::testhelper;
 </ul>
 
 
-<a name="acknowledgements"></a>
+<a id="acknowledgements"></a>
 <h2>acknowledgements</h2>
 
 As all my works the present tutorial would be not possible without the help of the perlmonks.org community.
