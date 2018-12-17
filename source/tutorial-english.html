@@ -981,7 +981,7 @@ git-client> git commit -a -m "some code into validate and modified Makefile.PL"
  2 files changed, 23 insertions(+), 3 deletions(-)
 
 </pre>
-We committed before adding the new file! shame on us! Add the new file a issue another commit:
+We committed before adding the new file! shame on us! Add the new file and issue another commit:
 
 <pre>
 git-client> git add  t/01-validate.t
