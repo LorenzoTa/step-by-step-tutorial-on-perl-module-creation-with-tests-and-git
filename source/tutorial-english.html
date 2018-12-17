@@ -590,10 +590,10 @@ BEGIN {
 diag( "Testing Range::Validator $Range::Validator::VERSION, Perl $], $^X" );
 
 </pre>
-This perl program use strict and wanrings (you already know they are friends, do you?) then load the core module ?Test::More? which generally
+This perl program use strict and wanrings (you already know they are friends, do you?) then load the core module <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> which generally
 requires that you declare how many tests you intend to run ( <code>plan tests => 1</code> ) then inside the <code>BEGIN</code> block use its method <code>use_ok</code> that loads our own module and in case of failure print "Bail out!\n" aka "everything went wrong, leave the boat".
 
-If the above succeeded ?Test::More? calls <code>diag</code> that emits a note with the text specified, useful to have while reviewing test output. The module also has the <code>note</code> method that I prefer. Go to the module documentation to have an idea of ?Test::More?
+If the above succeeded <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> calls <code>diag</code> that emits a note with the text specified, useful to have while reviewing test output. The module also has the <code>note</code> method that I prefer. Go to the module documentation to have an idea of <a href="https://perldoc.perl.org/Test/More.html">Test::More</a>
 
 So, instead of the one liner we can safely call this test:
 
