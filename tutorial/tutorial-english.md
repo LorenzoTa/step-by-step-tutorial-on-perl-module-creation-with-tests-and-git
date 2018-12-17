@@ -388,7 +388,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 </pre>
 Many terms in the above output would be worth to be explained, but not by me. Just be sure to understand what <code>branch</code>, <code>commit</code>, <code>tracked/untracked</code> means in the git world. Luckily the command is so sweet to add a hint for us as last line: <code>(use "git add" to track)</code> 
 
-Git is built for this reason: it can track all modifications we do to coed base and it take a picture (a snapshot in git terminology) of the whole coed base everytime we commit these changes. But <code>git init</code> initialized an empty repository: we must tell git which files to add to tracked ones.
+Git is built for this reason: it can track all modifications we do to code base and it take a picture (a snapshot in git terminology) of the whole code base everytime we commit these changes. But <code>git init</code> initialized an empty repository: we must tell git which files to add to tracked ones.
 
 We simply want to track all files <code>module-starter</code> created for us: <code>git add .</code> add the current directory and all its content to tracked content. Run it and check the status again:
 
@@ -461,7 +461,7 @@ YourGithubLogin       https://github.com/YourGithubLogin/Range-Validator.git (pu
 </pre>
 The verify operation gives us two hints: for the remote repository that we call <code>YourGithubLogin</code> we can do <code>fetch</code> (import all changes you still have not, from the remote repository to your local copy) or <code>push</code> (export your local copy to the remote repository).
 
-Since on github there is nothing and locally we have the whole coed base, we definitively want to <code>push</code> and we can do that if and only if, we have the permission in the remote repository. It's our own repository, so no problem (git will ask for the github password). The <code>push</code> wants to know which branch to push: we only have <code>master</code> so:
+Since on github there is nothing and locally we have the whole code base, we definitively want to <code>push</code> and we can do that if and only if, we have the permission in the remote repository. It's our own repository, so no problem (git will ask for the github password). The <code>push</code> wants to know which branch to push: we only have <code>master</code> so:
 
 <pre>
 git-client> git push YourGithubLogin master
@@ -484,7 +484,7 @@ remote:
 To https://github.com/YourGithubLogin/Range-Validator.git
  * [new branch]      master -> master
 </pre>
-Go to the github website to see what happened: the whole coed base is in the online repository too, updated to our last commit (aka our first, unique commit for the moment). From now on we can work on our code from any machine having a <code>git</code> client. To do so we must be diligent and committing and pushing our changes when is the moment, to maintain the online repository up to date. Clean yard, happy master mason.
+Go to the github website to see what happened: the whole code base is in the online repository too, updated to our last commit (aka our first, unique commit for the moment). From now on we can work on our code from any machine having a <code>git</code> client. To do so we must be diligent and committing and pushing our changes when is the moment, to maintain the online repository up to date. Clean yard, happy master mason.
 
 A whole day is passed, well.. two days, and we did not wrote a single line of perl code: we are starting the right way! Time to go to sleep with a well prepared playground.
 
@@ -568,7 +568,7 @@ shell>
 </pre>
 No errors: good! the module can be used and has no syntax errors. But.. one moment: we want to try out all our features, and we plan to add many, using one liners? Are we mad?! No; we will use tests. 
 
-Tests are wonderful in perl and planning good tests (a test suite) will save a lot of time in the future and makes your code maintainable. The time you invest writing tests <b>while coding</b> will save a lot of time in the future when you modify the coed base. I'm not a theoric of software writing nor an orthodox of test driven development, but to write tests while you code is a very good practice. You can even write tests <b>before coding</b> ie: you write something that test a wanted behaviour, you run it expecting a failure, then you write the code that make the test happy. This is up to you.
+Tests are wonderful in perl and planning good tests (a test suite) will save a lot of time in the future and makes your code maintainable. The time you invest writing tests <b>while coding</b> will save a lot of time in the future when you modify the code base. I'm not a theoric of software writing nor an orthodox of test driven development, but to write tests while you code is a very good practice. You can even write tests <b>before coding</b> ie: you write something that test a wanted behaviour, you run it expecting a failure, then you write the code that make the test happy. This is up to you.
 
 What is not a choice is having no test suite or writing all tests at the end of code development. No.
 
@@ -661,7 +661,7 @@ Result: PASS
 <a id="daytwostep3"></a>
 <h4>step 3) commit changes with git</h4> 
 
-Ok we have done some change to the code base, small ones but changes. Wich changes? I'm lazy and I do not remember all files we modified. No problem <code>git</code> will tell us. At least I remember which command I need to review the coed base status: <code>git status</code>
+Ok we have done some change to the code base, small ones but changes. Wich changes? I'm lazy and I do not remember all files we modified. No problem <code>git</code> will tell us. At least I remember which command I need to review the code base status: <code>git status</code>
 
 Go to the git shell and run it:
 
@@ -681,7 +681,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 </pre>
 Ah yes, we modified two files: not only the module also the <code>t/00-load.t</code> removing the <code>-T</code> from shebang line, thanks <code>git</code> and you are also so kind to give me two hints about what to do next: <code>use "git add" and/or "git commit -a"</code>
 
-Go for the shorter path: we commit adding all files  with <code>git commit -a</code> ie: we commit all files <b>that are already tracked</b> and eventually we remove from tracked list all files deleted in the coed base. But we remember that committing needs to include a message as label of the commit:  <code>git commit -m "message"</code> so putting all together and checking the status:
+Go for the shorter path: we commit adding all files  with <code>git commit -a</code> ie: we commit all files <b>that are already tracked</b> and eventually we remove from tracked list all files deleted in the code base. But we remember that committing needs to include a message as label of the commit:  <code>git commit -m "message"</code> so putting all together and checking the status:
 
 <pre>
 git-client> git commit -a -m "moved POD, removed -T"
@@ -1029,7 +1029,7 @@ remote: Resolving deltas: 100% (5/5), completed with 4 local objects.
 To https://github.com/YourGithubLogin/Range-Validator
    49a0690..5083ec3  master -> master
 </pre>
-What a day! We added six lines of code and an entire test file! Are we programming too much? Probably no but we are doing it in a robust way and we discovered it can be hard work. In perl hard work is justified only by (future) laziness and we are doing all these work because we are lazy and we do not want to waste our time when, in a month or a year, we need to take this coed base again to enhance it or to debug it. So now it's time for the bed and for deserved colorful dreams.
+What a day! We added six lines of code and an entire test file! Are we programming too much? Probably no but we are doing it in a robust way and we discovered it can be hard work. In perl hard work is justified only by (future) laziness and we are doing all these work because we are lazy and we do not want to waste our time when, in a month or a year, we need to take this code base again to enhance it or to debug it. So now it's time for the bed and for deserved colorful dreams.
 
 
 
@@ -1792,7 +1792,7 @@ my @valid_range = Range::Validator::validate( @actions );
 actions_to_activate_account( @valid_range );
 
 </pre>
-Right? The module goes in production and 98% of errors from the foreign part of the coed base disappeared. Only 98%?
+Right? The module goes in production and 98% of errors from the foreign part of the code base disappeared. Only 98%?
 Yes.. 
 
 Miss A of department Z call your boss in a berserk state: not all their errors are gone away. They use the list form but Miss A and the developer B are sure no empty lists are passed to your validate sub. You call the developer B, a good fellow, who explain you that list are generated from  a database field that cannot be empty (NOT NULL constraint in the database):
