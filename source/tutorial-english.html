@@ -636,7 +636,7 @@ Files=1, Tests=1,  0 wallclock secs ( 0.01 usr +  0.02 sys =  0.03 CPU)
 Result: PASS
 
 </pre>
-Basically the output includes some statistics and the count of test files processed and the overall number of tests. Also note that the message emitted by <code>diag</code> is in another place: diagnostics by ?Test::More? goes to <code>STDERR</code> (which is buffered differently in respect of <code>STDOUT</code> but this is another story..) and TAP aggregates tests results and prints them to <code>STDOUT</code>
+Basically the output includes some statistics and the count of test files processed and the overall number of tests. Also note that the message emitted by <code>diag</code> is in another place: diagnostics by <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> goes to <code>STDERR</code> (which is buffered differently in respect of <code>STDOUT</code> but this is another story..) and TAP aggregates tests results and prints them to <code>STDOUT</code>
 
 Finally we have the developer gratification: <code>Result: PASS</code> indicating all went well.
 
@@ -838,11 +838,11 @@ dies_ok { Range::Validator::validate('xxxinvalidstringxxx') }
 			"expected to die with invalid character";
 
 </pre>
-First of all we used a different notation for ?Test::More? ie. <code>use Test::More qw(no_plan)</code> 
+First of all we used a different notation for <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> ie. <code>use Test::More qw(no_plan)</code> 
 
 We are telling to the module we (still) have not a plan about how many tests will be in this file. This is a handy feature.
 
-The ?Test::More? core module offers us <code>ok</code> <code>use_ok</code> and <code>note</code> methods: view the module doc for more info about them.
+The <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> core module offers us <code>ok</code> <code>use_ok</code> and <code>note</code> methods: view the module doc for more info about them.
 
 But we also used in the above test the <code>dies_ok</code> function: this one comes from the CPAN module <code>Test::Exception</code> and we need to add this module in to our dependencies list.
 
