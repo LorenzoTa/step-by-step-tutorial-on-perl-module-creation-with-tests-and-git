@@ -1940,6 +1940,8 @@ As stated in "day zero - the plan" sharing early is a good principle: can be wor
 
 Your module is ready to be used and it is already used, but is not installable by a CPAN client nor can be indexed by a CPAN indexer at the moment. Read the short but complete description of possible files at <a href="https://www.perlmonks.org/index.pl?node_id=1009586">What are the files in a CPAN distribution?</a>
 
+To create a properly structured CPAN distribution you must run <code>perl Makefile.PL</code> then <code>make dist</code>, this will create a tarball in the current directory that you can share and install using a CPAN client, or even upload to CPAN.
+
 Following tests are not needed to install or use your module but to help you spotting what can be wrong in your distribution.
 
 
