@@ -4,3 +4,12 @@ remeber to:
 1) in <code> ... </code> blocks change from <code>__DATA__</code> to <code>\_\_DATA\_\_</code> 
 
 2) in <code> ... </code> blocks change from <code> \. </code> to <code> \\. </code> 
+
+
+Migrating differences from source to tutorial
+
+1)diff ./tutorial/tutorial-english.md ./source/tutorial-english.html > patchfromsrc2md.patch
+
+2)edit patchfromsrc2md.patch and remove: the title tag, all part with escaped DATA, dots in code block, html entitities in regexes
+
+3)patch ./tutorial/tutorial-english.md -i patchfromsrc2md.patch -o ./tutorial/tutorial-englishNEW.md
