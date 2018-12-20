@@ -168,6 +168,9 @@
 	<li>
 		 <a href="#daysevenstep6">step 6) try a real CPAN client installation</a>  
 	</li>
+	<li>
+		 <a href="#daysevenstep7">step 7) looking toward quality</a>  
+	</li>
 </ul>	
 
 
@@ -2123,7 +2126,10 @@ A good glance of two dozens of commits! We have done a good job, even if with so
 It's now time to see if our module can be installaed by a cpan client. Nothing easier: if you are in the distribution folder extracted from a tarball created by <code>make dist</code>, just run <code>cpan .</code> and enjoy the output (note that this command will modify the content of the directory!).
 
 
+<a id="daysevenstep7"></a>
+<h4>step 7) looking toward quality</h4>
 
+Until now we discussed the very minimum you have to do to be polite with other people, making your module. There is much more you can do to have a quality distribution. Look at wonderful checklist proposed by <a href="https://metacpan.org/pod/Release::Checklist">Release::Checklist</a> being part of the official perl toolchain workgroup.
 
 
 <a id="dayeight"></a>
