@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 	
+	
+	
 </head>
 <body>
-
-
 <h1>Discipulus's step by step tutorial on module creation with tests and git</h1>
-<small>version 1</small>
+<small>version 2</small>
 
 
 <a href="#dayzero"><h4>day zero: introduction</h4></a>
@@ -1940,6 +1940,8 @@ As stated in "day zero - the plan" sharing early is a good principle: can be wor
 
 Your module is ready to be used and it is already used, but is not installable by a CPAN client nor can be indexed by a CPAN indexer at the moment. Read the short but complete description of possible files at <a href="https://www.perlmonks.org/index.pl?node_id=1009586">What are the files in a CPAN distribution?</a>
 
+To create a properly structured CPAN distribution you must run <code>perl Makefile.PL</code> then <code>make dist</code>, this will create a tarball in the current directory that you can share and install using a CPAN client, or even upload to CPAN.
+
 Following tests are not needed to install or use your module but to help you spotting what can be wrong in your distribution.
 
 
@@ -2001,7 +2003,7 @@ shell> prove ./t/manifest.t
 </pre>
 By far better: the test points us to two files we for sure need to include in <code>MANIFEST</code> and precisely: <code>MANIFEST.SKIP</code> and <code>t/01-validate.t</code>
 
-Go to the <code>MANIFEST</code> file and add them (where they are appropriate, near similar files and paying attention to case an paths), then commit the change. If you rerun the above test you'll see files added to <code>MANIFEST</code> are no more present in the failure output.
+Use the <code>make manifest</code> command to add them automatically (after running <code>perl Makefile.PL</code> if necessary), then commit the change. A note for strawberry perl users: pay attention to your flavour of <code>make</code> infact you probably have <code>gmake</code> shipped with your distribution. If you rerun the above test you'll see files added to <code>MANIFEST</code> are no more present in the failure output.
 
 Let's examine the remaining two files. What is <code>ignore.txt</code>? It was created as default ignore list by <code>module-starter</code> and it contains many lines of regexes. If we want <code>module-starter</code> to create <code>MANIFEST.SKIP</code> instead, next time we'll use it specify <code>--ignores='manifest'</code> For the moment we can delete it. Commit.
 
@@ -2118,7 +2120,7 @@ A good glance of two dozens of commits! We have done a good job, even if with so
 <a id="daysevenstep6"></a>
 <h4>step 6) try a real CPAN client installation</h4>
 
-It's now time to see if our module can be installaed by a cpan client. Nothing easier: if you are in the module folder just run <code>cpan .</code> and enjoy the output (note that this command will modify the content of the directory!).
+It's now time to see if our module can be installaed by a cpan client. Nothing easier: if you are in the distribution folder extracted from a tarball created by <code>make dist</code>, just run <code>cpan .</code> and enjoy the output (note that this command will modify the content of the directory!).
 
 
 
