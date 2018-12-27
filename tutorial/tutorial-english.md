@@ -2130,6 +2130,8 @@ It's now time to see if our module can be installaed by a cpan client. Nothing e
 <h4>step 7) looking toward quality</h4>
 
 Until now we discussed the very minimum you have to do to be polite with other people, making your module. There is much more you can do to have a quality distribution. Look at wonderful checklist proposed by <a href="https://metacpan.org/pod/Release::Checklist">Release::Checklist</a> being part of the official perl toolchain workgroup.
+Just an example: install <a href="https://metacpan.org/pod/Module::CPANTS::Analyse">Module::CPANTS::Analyse</a> and its frontend <a href="https://metacpan.org/pod/App::CPANTS::Lint">App::CPANTS::Lint</a> to check the overall quality, well Kwalitee, of your distribution.
+
 
 
 <a id="dayeight"></a>
