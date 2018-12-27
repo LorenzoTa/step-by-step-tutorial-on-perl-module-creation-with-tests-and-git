@@ -1258,11 +1258,11 @@ foreach my $string ( '1.2', '0..2,5.6,8', '1,2,.,3', '.', '1.', '.1' ){
 }
 
 </pre>
-Also the next regex (aimed to search for three dots) in the module is not working for the very same reason; change it from <code>/[^.]+\.{3}/</code> to simply <code>/\.{3}/</code>
+Also the next regex (aimed to search for three dots) in the module is not working for the very same reason; change it from <code>/[^.]+\\.{3}/</code> to simply <code>/\\.{3}/</code>
 
 The moral? Tests are your friends! We spot, by hazard, an edge case and our code must be able to deal with it, so free as much your fantasy writing your tests. Cockroaches come from box corners.. ops, no I mean: bugs come from edge case.
 
-Now we add some test to spot, and die, if three dots are found, with the new simpler regex <code>/\.{3}/</code> so we change the code  adding the following code to the test:
+Now we add some test to spot, and die, if three dots are found, with the new simpler regex <code>/\\.{3}/</code> so we change the code  adding the following code to the test:
 
 <pre>
 foreach my $newstring ( '1...3', '1,3...5','...', '1...', '...2' ){
