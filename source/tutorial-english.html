@@ -2006,7 +2006,7 @@ shell> prove ./t/manifest.t
 </pre>
 By far better: the test points us to two files we for sure need to include in <code>MANIFEST</code> and precisely: <code>MANIFEST.SKIP</code> and <code>t/01-validate.t</code>
 
-Use the <code>make manifest</code> command to add them automatically (after running <code>perl Makefile.PL</code> if necessary), then commit the change. A note for strawberry perl users: pay attention to your flavour of <code>make</code> infact you probably have <code>gmake</code> shipped with your distribution. If you rerun the above test you'll see files added to <code>MANIFEST</code> are no more present in the failure output.
+Use the <code>make manifest</code> command to add them automatically (after running <code>perl Makefile.PL</code> if necessary), then commit the change. A note for strawberry perl users: pay attention to your flavour of <code>make</code> infact you probably have <code>dmake</code> shipped with your distribution. If you rerun the above test you'll see files added to <code>MANIFEST</code> are no more present in the failure output.
 
 Let's examine the remaining two files. What is <code>ignore.txt</code>? It was created as default ignore list by <code>module-starter</code> and it contains many lines of regexes. If we want <code>module-starter</code> to create <code>MANIFEST.SKIP</code> instead, next time we'll use it specify <code>--ignores='manifest'</code> For the moment we can delete it. Commit.
 
