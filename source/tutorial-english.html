@@ -241,19 +241,19 @@ There are other similar but different sources of knowledge about module creation
 <a id="thebagoftools"></a>
 <h4>the bag of tools</h4>
 
-As for every duty, check your equipment before starting. You probably already have perl, a shell (or something less fortunate if you are on windows, like me ;) and a favourite text editor or IDE.
+As for every job, check your equipment before starting. You probably already have perl, a shell (or something less fortunate if you are on windows, like me ;) and a favourite text editor or IDE.
 
-But here in this tutorial we'll use  <code>git</code> in the command line and <a href="https://github.com">github</a> to store our work in a central point (very handy feature). So get a <code>github</code> account and a <code>git</code> client.
+But here in this tutorial we'll use  <code>git</code> on the command line and <a href="https://github.com">github</a> to store our work in a central repository (very handy feature). So get a <code>github</code> account and a <code>git</code> client.
 
-This tutorial will focus on the importance (I'd say preminence or even predominance) of testing while developing a perl module. I wrote lonely scripts for years then I realized that even if my script seemed robust, I have no way to test them in a simple and reliable way.
+This tutorial will focus on the importance (I'd say preeminence or even predominance) of testing while developing a perl module. I wrote lonely scripts for years until I realized that even if my script seemed robust, I have no way to test them in a simple and reliable way.
 
-So we will use the core module <a href="http://perldoc.perl.org/Test/More.html">Test::More</a> and the CPAN one <a href="https://metacpan.org/pod/Test::Exception">Test::Exception</a> in our module so get it installed using your <code>cpan</code> or <code>cpanm</code> client. Take a look to <a href="http://perldoc.perl.org/Test/Simple.html">Test::Simple</a> if you are not used to test.
+So we will use the core module <a href="http://perldoc.perl.org/Test/More.html">Test::More</a> and the CPAN <a href="https://metacpan.org/pod/Test::Exception">Test::Exception</a> in our module so get it installed using your <code>cpan</code> or <code>cpanm</code> client. Take a look at <a href="http://perldoc.perl.org/Test/Simple.html">Test::Simple</a> if you are not used to testing.
 
-We also use the core module <a href="http://perldoc.perl.org/Carp.html">Carp</a> to report errors from user point of view.
+We also use the core module <a href="http://perldoc.perl.org/Carp.html">Carp</a> to report errors from the user's point of view.
 
 We use <a href="https://metacpan.org/pod/Module::Starter">Module::Starter</a> to have the skeleton of our module done for us, but, as always there are valid alternatives. Install it.
 
-We'll document our module using POD (Plain Old Documentation) see <a href="https://perldoc.perl.org/perlpod.html">perlpod</a> for reference.
+We'll document our module using POD (Plain Old Documentation) see <a href="https://perldoc.perl.org/perlpod.html">perlpod</a> for a reference.
 
 
 
