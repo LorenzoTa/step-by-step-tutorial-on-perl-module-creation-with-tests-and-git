@@ -44,7 +44,7 @@
 	
 	
 
-<a href="#daytwo"><h4>day two: some change and tests</h4></a>
+<a href="#daytwo"><h4>day two: some changes and tests</h4></a>
 <ul>
 	<li>
 		 <a href="#daytwostep1">step 1) POD documentation</a>  
@@ -493,23 +493,23 @@ A whole day has passed, well.. two days, and we did not write a single line of p
 
 
 <a id="daytwo"></a>
-<h2>day two: some change and tests</h2>
+<h2>day two: some changes and tests</h2>
 
 
 <a id="daytwostep1"></a>
 <h4>step 1) POD documentation</h4> 
 
-Well first of all some cleaning: open you local copy of the module <code>/path/to/Range-Validator/lib/Range/Validator.pm</code> in your text editor or IDE. Personally  I like the POD documentation to be all together after the <code>__DATA__</code> token rather interleaved with the code. Inside the code I only like to have comments. POD documentation is for the user, comments are for you! After a week or month you'll never remember what your code is doing: comment it explaining what is passing.
+Well first of all some cleaning: open you local copy of the module <code>/path/to/Range-Validator/lib/Range/Validator.pm</code> in your text editor or IDE. Personally  I like the POD documentation to be all together after the <code>__DATA__</code> token rather than interleaved with the code. Inside the code I only like to have comments. POD documentation is for the user, comments are for you! After a week or month you'll never remember what your code is doing: comment it explaining what is happening.
 
-So go to the end of the module where the line is the final <code>1;</code> ( remember all modules must have a true return value as last statement) and place, in a new line the <code>__DATA__</code> token. Move all POD after the token. Also cancel the POD and the code relative to <code>function2</code>
+So go to the end of the module where the line is the final <code>1;</code> ( remember all modules must return a true value in their last statement) and add in a new line the <code>__DATA__</code> token. Move all POD after this token. Also remove the POD and the code of <code>function2</code>
 
-Then rename <code>function1</code> into <code>validate</code> and change accordingly the name of the POD section too.
+Then rename <code>function1</code> to <code>validate</code> and change the name of the POD section accordingly.
 
-Modify the POD part <code>=head1 NAME</code> with a more humble and meaning description: <code>Range::Validator - a simple module to verify array and list ranges</code>
+Modify the POD part <code>=head1 NAME</code> with a more humble and meaningful description: <code>Range::Validator - a simple module to verify array and list ranges</code>
 
-Change the <code>=head1 SYNOPSIS</code> part too, removing unneeded text and changing code lines ( see below ): we do not do an object oriented module, so no <code>new</code> method for us. You plan to accept both real ranges and strings representing ranges.
+Change the <code>=head1 SYNOPSIS</code> part too, removing unneeded text and changing code lines ( see below ): we're not doing an object oriented module, so no <code>new</code> method for us. The plan is to accept both real ranges and strings representing ranges.
 
-So, if you followed me, the module must look like:
+So, if you followed along, the module will look like:
 <pre>
 package Range::Validator;
 
@@ -551,9 +551,9 @@ Version 0.01
 # more POD ...
 
 </pre>
-Ok? Let's check our new POD is correct: open the shell in the directory created yesterday <code>/path/to/Range-Validator</code> and run the following command: <code> perldoc ./lib/Range/Validator.pm </code> 
+Ok? Let's check if our new POD is correct. Open the shell in the directory created yesterday <code>/path/to/Range-Validator</code> and run the following command: <code> perldoc ./lib/Range/Validator.pm </code>
 
-Review the POD. It must be ok. 
+Review the POD and make sure it is ok.
 
 
 <a id="daytwostep2"></a>	
@@ -568,13 +568,13 @@ shell> perl -I ./lib -MRange::Validator -e 1
 
 shell>
 </pre>
-No errors: good! the module can be used and has no syntax errors. But.. one moment: we want to try out all our features, and we plan to add many, using one liners? Are we mad?! No; we will use tests. 
+No errors. Good! The module can be used and has no syntax errors. But.. one moment: we want to try out all our features, and we plan to add many, using one liners? Are we mad?! No; we will use tests.
 
-Tests are wonderful in perl and planning good tests (a test suite) will save a lot of time in the future and makes your code maintainable. The time you invest writing tests <b>while coding</b> will save a lot of time in the future when you modify the code base. I'm not a theoric of software writing nor an orthodox of test driven development, but to write tests while you code is a very good practice. You can even write tests <b>before coding</b> ie: you write something that test a wanted behaviour, you run it expecting a failure, then you write the code that make the test happy. This is up to you.
+Tests are wonderful in perl and planning good tests (a test suite) will save you a lot of time in the future and makes your code maintainable. The time you invest in writing tests <b>while coding</b> will save you a lot of time when you modify the code base. I'm not an authority on software writing, nor do I strictly adhere to test driven development, but to write tests while you code is a very good practice. You can even write tests <b>before coding</b> i.e. you write something that tests a wanted behaviour, you run it expecting a failure, then you write the code that makes the test happy. This is up to you.
 
 What is not a choice is having no test suite or writing all tests at the end of code development. No.
 
-In the day one we used <code>module-starter</code> to produce a skeleton of our module. <code>module-starter</code> was so kind to write a bounch of tests for us in the standard directory <code>/t</code> (ie tests). Tests are run normally during the installation (sorted by their names) of the module but, as we already said, they are the main source of serenity for us as developers. So let's see what <code>module-starter</code> wrote inside <code>/t/00-load.t</code>
+In day one we used <code>module-starter</code> to produce a skeleton of our module. <code>module-starter</code> was so kind to write a bunch of tests for us in the standard directory <code>/t</code> (i.e. tests). Tests are run normally during installation (sorted by their names) of the module but, as we already said, they are the main source of serenity for us as developers. So let's see what <code>module-starter</code> wrote inside <code>/t/00-load.t</code>
 
 <pre>
 #!perl -T
@@ -592,10 +592,10 @@ BEGIN {
 diag( "Testing Range::Validator $Range::Validator::VERSION, Perl $], $^X" );
 
 </pre>
-This perl program use strict and wanrings (you already know they are friends, do you?) then load the core module <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> which generally
-requires that you declare how many tests you intend to run ( <code>plan tests => 1</code> ) then inside the <code>BEGIN</code> block use its method <code>use_ok</code> that loads our own module and in case of failure print "Bail out!\n" aka "everything went wrong, leave the boat".
+This perl program uses strict and warnings (you already know they are your friends, don't you?) then loads the core module <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> ( which generally
+requires that you declare how many tests you intend to run ( <code>plan tests => 1</code> )), then inside the <code>BEGIN</code> block uses its method <code>use_ok</code> that loads our own module and in case of a failure prints "Bail out!\n" aka "everything went wrong, leave the boat".
 
-If the above succeeded <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> calls <code>diag</code> that emits a note with the text specified, useful to have while reviewing test output. The module also has the <code>note</code> method that I prefer. Go to the module documentation to have an idea of <a href="https://perldoc.perl.org/Test/More.html">Test::More</a>
+If the above succeeded <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> calls <code>diag</code> that emits a note with the specified text, useful to have while reviewing test output. The module also has the <code>note</code> method, which I prefer. Go to the module documentation to learn more of <a href="https://perldoc.perl.org/Test/More.html">Test::More</a>
 
 So, instead of the one liner we can safely call this test:
 
@@ -605,9 +605,9 @@ shell> perl -I ./lib ./t/00-load.t
 "-T" is on the #! line, it must also be used on the command line at ./t/00-load.t line 1.
 
 </pre>
-The test crash because of the <code>-T</code> that turns taint mode on. Taint mode is base of the security in perl, but for the moment we do not need it enabled, so we remove from the shebang line which will result in <code>#!perl</code> (read about taint mode in the official perl documentation: <a href="https://perldoc.perl.org/perlsec.html#Taint-mode">perlsec</a>). 
+The test crashes because of the <code>-T</code> that turns taint mode on. Taint mode is a basic security protection in perl, but for the moment we do not need it enabled, so we remove <code>-T</code> from the shebang line which will result in <code>#!perl</code> (read about taint mode in the official perl documentation: <a href="https://perldoc.perl.org/perlsec.html#Taint-mode">perlsec</a>).
 
-(Note that removing <code>-T</code> switch is not the best thing to do: <code>perl -T -I ./lib ./t/00-load.t</code> is by far a better solution).
+(Note that removing the <code>-T</code> switch is not the best thing to do: <code>perl -T -I ./lib ./t/00-load.t</code> is a far better solution).
 
 After this change the test will run as expected:
 
@@ -619,14 +619,14 @@ ok 1 - use Range::Validator;
 # Testing Range::Validator 0.01, Perl 5.026000, /path/to/my/perl
 
 </pre>
-Wow! we run our first test! ..yes, but in the wrong way. Well not exactly the wrong way but not the way tests are run during installation.
-Test are run through a TAP harness (TAP stands for Test Anything Protocol and is present in perl since ever: perl born the right way ;).
+Wow! We ran our first test! ..Yes, but in the wrong way. Well not exactly the wrong way but not the way tests are run during installation.
+Test are run through a TAP harness (TAP stands for Test Anything Protocol and is present in perl since forever: perl was born the right way ;).
 
-With your perl distribution you have the <a href="https://perldoc.perl.org/prove.html">prove</a> command (see its documentation) that run tests through a TAP harness. So we can use it.
+With your perl distribution you have the <a href="https://perldoc.perl.org/prove.html">prove</a> command (see its documentation) that runs tests through a TAP harness. So we can use it.
 
-We can call <a href="https://perldoc.perl.org/prove.html">prove</a> the very same way we called perl: <code>prove -I ./lib ./t/00-load.t</code> but we are lazy and we spot <code>prove -l</code> which has the same effect of <code>prove -I ./lib</code> ie include <code>./lib</code> in <code>@INC</code>
+We can call <a href="https://perldoc.perl.org/prove.html">prove</a> the very same way we called perl: <code>prove -I ./lib ./t/00-load.t</code> but we are lazy and we spot <code>prove -l</code> which has the same effect as <code>prove -I ./lib</code> i.e. include <code>./lib</code> in <code>@INC</code>
 
-Run the very same test through <a href="https://perldoc.perl.org/prove.html">prove</a> instead that perl and you will see a slightly different output:
+Run the very same test through <a href="https://perldoc.perl.org/prove.html">prove</a> instead of perl and you will see slightly different output:
 
 <pre>
 shell> prove -l ./t/00-load.t
@@ -638,11 +638,11 @@ Files=1, Tests=1,  0 wallclock secs ( 0.01 usr +  0.02 sys =  0.03 CPU)
 Result: PASS
 
 </pre>
-Basically the output includes some statistics and the count of test files processed and the overall number of tests. Also note that the message emitted by <code>diag</code> is in another place: diagnostics by <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> goes to <code>STDERR</code> (which is buffered differently in respect of <code>STDOUT</code> but this is another story..) and TAP aggregates tests results and prints them to <code>STDOUT</code>
+Basically the output includes some statistics and the number of test files processed and the overall number of tests. Also note that the message emitted by <code>diag</code> is in a different place: diagnostics from <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> goes to <code>STDERR</code> (which is buffered differently from <code>STDOUT</code> but this is a different story..) and TAP aggregates test results and prints them to <code>STDOUT</code>
 
-Finally we have the developer gratification: <code>Result: PASS</code> indicating all went well.
+Finally we have the gratifying: <code>Result: PASS</code> indicating all went well.
 
-The <code>prove</code> program promotes laziness and without argument (as a test file in the previous example) runs automatically every test file found under <code>/t</code> folder: this is the same behaviour you will have during an effective module installation:
+The <code>prove</code> program promotes laziness and without arguments (such as the test file in the previous example) automatically runs every test file found under the <code>/t</code> folder: this is the same behaviour you will have during module installation:
 
 <pre>
 shell> prove -l
@@ -663,7 +663,7 @@ Result: PASS
 <a id="daytwostep3"></a>
 <h4>step 3) commit changes with git</h4> 
 
-Ok we have done some change to the code base, small ones but changes. Wich changes? I'm lazy and I do not remember all files we modified. No problem <code>git</code> will tell us. At least I remember which command I need to review the code base status: <code>git status</code>
+Ok we have done some changes to the code base, small changes but still changes. Which changes? I'm lazy and I do not remember all files we modified. No problem <code>git</code> will tell us. At least I remember which command I need to review the code base status: <code>git status</code>
 
 Go to the git shell and run it:
 
@@ -681,9 +681,9 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 
 </pre>
-Ah yes, we modified two files: not only the module also the <code>t/00-load.t</code> removing the <code>-T</code> from shebang line, thanks <code>git</code> and you are also so kind to give me two hints about what to do next: <code>use "git add" and/or "git commit -a"</code>
+Ah yes, we modified two files: not only the module, but also the <code>t/00-load.t</code> removing the <code>-T</code> from the shebang line, thanks <code>git</code> and you are also so kind to give me two hints about what to do next: <code>use "git add" and/or "git commit -a"</code>
 
-Go for the shorter path: we commit adding all files  with <code>git commit -a</code> ie: we commit all files <b>that are already tracked</b> and eventually we remove from tracked list all files deleted in the code base. But we remember that committing needs to include a message as label of the commit:  <code>git commit -m "message"</code> so putting all together and checking the status:
+Go for the shorter path: we commit adding all files with <code>git commit -a</code> i.e. we commit all files <b>that are already tracked</b> (and eventually we'll remove from the tracked list all files deleted in the code base). But we remember that committing needs to include a message as label of the commit:  <code>git commit -m "message"</code> so putting it all together and checking the status we do:
 
 <pre>
 git-client> git commit -a -m "moved POD, removed -T"
@@ -730,9 +730,9 @@ To https://github.com/YourGithubLogin/Range-Validator
    1788c12..49a0690  master -> master
 
 </pre>
-Go to the browser and open the online repository to see what happened after the <code>git push</code>: in the main page, where files are listed we spot our two modified files with a new timestamp and with the message we used when committing. Under the Insight tab and then under Network in the right menu, we can see two points connected by a line segment: this is the visual history of our repository and each commit we have done: here you will find also eventual branches, but this is another story.
+Go to the browser and open the online repository to see what happened after the <code>git push</code>: in the main page, where files are listed we spot our two modified files with a new timestamp and with the message we used when committing. Under the Insight tab and then under Network in the right menu, we can see two points connected by a line segment: this is the visual history of our repository and each commit we have done: here you will find also eventual branches, but this is a different story.
 
-Well, another day is passed without writing a single line of perl code! At least for the moment our code is 100% bug free ;)
+Well, another day has passed without writing a single line of perl code! At least for the moment our code is 100% bug free ;)
 I vaguely recall a chinese motto: "when you start something, start from the opposite" or something like that. To write a robust perl module start writing no perl code, for two days!
 
 
