@@ -298,12 +298,12 @@ On Interfaces and APIs</a>
 <a id="dayonestep1"></a>
 <h4>step 1) an online repository on github</h4> 
 
-Create an empty repository on the github server named Range-Validator (they do not accept <code>::</code> in names) see <a href="https://help.github.com/articles/creating-a-new-repository/">here for instruction</a>
+Create an empty repository on github named Range-Validator (they do not accept <code>::</code> in names) see <a href="https://help.github.com/articles/creating-a-new-repository/">instructions here</a>
 
 <a id="dayonestep2"></a>
 <h4>step 2) a new module with module-starter</h4>
 
-Open a shell to your scripts location and run the program <code>module-starter</code> that comes within <code>Module::Starter</code> It wants a  mail address, the author name and, obviously the module name:
+Open a shell to your script's location and run the program <code>module-starter</code> that comes from <code>Module::Starter</code>. It wants an e-mail address, the author name, and obviously the module name:
 
 <pre>
 shell> module-starter --module Range::Validator --author MyName --email MyName@cpan.org
@@ -322,7 +322,7 @@ Added to MANIFEST: xt/boilerplate.t
 Created starter directories and files
 
 </pre>
-A lot of work done for us! The <code>module-starter</code> program created all the above files into a new folder named <code>Range-Validator</code> let's see the content:
+A lot of work done for us! The <code>module-starter</code> program created all the above files in a new folder named <code>Range-Validator</code>. Let's see the content:
 
 <pre>
 ---Range-Validator
@@ -346,7 +346,7 @@ A lot of work done for us! The <code>module-starter</code> program created all t
    |----xt
            boilerplate.t
 </pre>
-We now have a good starting point to work on. Spend some minute to review the content of the files to get an idea.
+We now have a good starting point to work on. Spend some time to review the contents of the files to get familiar with them.
 
 
 
@@ -364,7 +364,7 @@ git-client> git init
 Initialized empty Git repository in /path/to/Range-Validator/.git/
 
 </pre>
-Nothing  impressive.. What happened? The above command created a <code>.git</code> directory, ~15Kb of infos, to take track of all changes you'll make to your files inside the <code>Range-Validator</code> folder. In other words it created a git repository. Empty. Empty?!? And all my files?
+Nothing impressive.. What happened? The above command created a <code>.git</code> directory, ~15kb of info, to track all changes you'll make to your files inside the <code>Range-Validator</code> folder. In other words it created a git repository. Empty. Empty?!? And all my files?
 
 It's time for a command you'll use many, many times: <code>git status</code>
 
@@ -389,11 +389,11 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 </pre>
-Many terms in the above output would be worth to be explained, but not by me. Just be sure to understand what <code>branch</code>, <code>commit</code>, <code>tracked/untracked</code> means in the git world. Luckily the command is so sweet to add a hint for us as last line: <code>(use "git add" to track)</code> 
+Many terms in the above output would be worth explaining, but not by me. Just be sure to understand what <code>branch</code>, <code>commit</code>, <code>tracked/untracked</code> means in the git world. Luckily the command is so sweet to add a hint for us in the last line: <code>(use "git add" to track)</code>
 
-Git is built for this reason: it can track all modifications we do to code base and it take a picture (a snapshot in git terminology) of the whole code base everytime we commit these changes. But <code>git init</code> initialized an empty repository: we must tell git which files to add to tracked ones.
+Git is built for this reason: it can track all modifications we do to the code base and it takes a picture (a snapshot in git terminology) of the whole code base every time we commit changes. But <code>git init</code> initialized an empty repository; we must tell git which files to add to the tracked ones.
 
-We simply want to track all files <code>module-starter</code> created for us: <code>git add .</code> add the current directory and all its content to tracked content. Run it and check the status again:
+We simply want to track all files <code>module-starter</code> created for us: <code>git add .</code> adds the current directory and all its contents to the tracked content. Run it and check the status again:
 
 <pre>
 git-client> git add .
@@ -449,8 +449,8 @@ nothing to commit, working tree clean
 With the above we committed everything. The status is now <code>working tree clean</code> what better news for a lumberjack used to examine daily tons of dirty logs? ;)
 
 
-Now we link the local copy and the remote one on github: all examples you find, and even what github propose to you, tell <code>git remote add origin https://github.com/...</code> where <code>origin</code> is not a keyword but just a label, a name: I found this misleading and I use my github name in this place or something
-that tell me the meaning, like <code>MyFriendRepo</code>. So from now on we will use <code>YourGithubLogin</code> there.
+Now we link the local copy and the remote one on github: all examples you'll find, and even what github proposes to you, says <code>git remote add origin https://github.com/...</code> where <code>origin</code> is not a keyword but just a label, a name. I found this misleading and I use my github name in this place or something
+that tells me the meaning, like <code>MyFriendRepo</code>. So from now on we will use <code>YourGithubLogin</code> there.
 
 Add the remote and verify it ( with <code>-v</code> ):
 <pre>
@@ -462,9 +462,9 @@ YourGithubLogin       https://github.com/YourGithubLogin/Range-Validator.git (fe
 YourGithubLogin       https://github.com/YourGithubLogin/Range-Validator.git (push)
 
 </pre>
-The verify operation gives us two hints: for the remote repository that we call <code>YourGithubLogin</code> we can do <code>fetch</code> (import all changes you still have not, from the remote repository to your local copy) or <code>push</code> (export your local copy to the remote repository).
+The verify operation gives us two hints: for the remote repository that we call <code>YourGithubLogin</code> we can do <code>fetch</code> (import all changes you don't have locally from the remote repository) or <code>push</code> (export your local copy to the remote repository).
 
-Since on github there is nothing and locally we have the whole code base, we definitively want to <code>push</code> and we can do that if and only if, we have the permission in the remote repository. It's our own repository, so no problem (git will ask for the github password). The <code>push</code> wants to know which branch to push: we only have <code>master</code> so:
+Since on github there is nothing and locally we have the whole code base, we definitively want to <code>push</code> and we can do that if and only if, we have permission to push in the remote repository. It's our own repository, so no problem (git will ask for the github password). The <code>push</code> wants to know which branch to push; we only have <code>master</code> so:
 
 <pre>
 git-client> git push YourGithubLogin master
@@ -487,10 +487,9 @@ remote:
 To https://github.com/YourGithubLogin/Range-Validator.git
  * [new branch]      master -> master
 </pre>
-Go to the github website to see what happened: the whole code base is in the online repository too, updated to our last commit (aka our first, unique commit for the moment). From now on we can work on our code from any machine having a <code>git</code> client. To do so we must be diligent and committing and pushing our changes when is the moment, to maintain the online repository up to date. Clean yard, happy master mason.
+Go to the github website to see what happened: the whole code base is in the online repository too, updated to our last commit (a.k.a. our first and only commit for the moment). From now on we can work on our code on any machine that has a <code>git</code> client. To do so we must be diligent and commit and push our changes when it is time, to keep the online repository up to date. Clean yard, happy master mason.
 
-A whole day is passed, well.. two days, and we did not wrote a single line of perl code: we are starting the right way! Time to go to sleep with a well prepared playground.
-
+A whole day has passed, well.. two days, and we did not write a single line of perl code yet. We are starting the right way! Time to go to sleep with a well prepared playground.
 
 
 <a id="daytwo"></a>
