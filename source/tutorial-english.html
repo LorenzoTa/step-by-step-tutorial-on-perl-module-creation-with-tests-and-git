@@ -261,29 +261,29 @@ We'll document our module using POD (Plain Old Documentation) see <a href="https
 <h4>the plan</h4>
 
 
-Some of your programs or modules work on lists and arrays. Functions inside these programs accept ranges but while you intend what a valid ranges is ( <code>0,1,2</code> or <code>0..2</code> ) you discover that your programs crashed many times because other humans or other programs passed ranges like: <code>0,1..3,2</code> (where <code>2</code> is present twice) or <code>3,2,1</code> (and your application is silently expecting <code>1,2,3</code> ) or <code>9..1</code> or even <code>0,1,good,13..15</code> not being a range at all, or simply <code>1-3</code> being a range for the user but not for you perl code that read it as <code>-2</code>.
+Some of your programs or modules work on lists and arrays. Functions inside these programs accept ranges but while you intend them to only be simple ranges ( <code>0,1,2</code> or <code>0..2</code> ) you discover that your programs crashed many times because other humans or other programs passed ranges like: <code>0,1..3,2</code> (where <code>2</code> is present twice) or <code>3,2,1</code> (and your application is silently expecting <code>1,2,3</code> ) or <code>9..1</code> or even <code>0,1,good,13..15</code> not being a range at all, or simply <code>1-3</code> being a range for the user but not for your perl code that reads it as <code>-2</code>.
 
-Bored of the situation you plan a new module to validate ranges. <code>Range::Validator</code> is the name you choose. Your initial plan is to expose just one sub: <code>validate</code>
+Tired of the situation you plan a new module to validate ranges. <code>Range::Validator</code> is the name you choose. Your initial plan is to expose just one sub: <code>validate</code>
 
 As in masonry, you need a well prepared plan before starting excavations. Then you need points and lines drawn on the terrain: everything that makes the job complex is part of the job itself.
 
 Look around: you can
-bet someone else got your same idea before you. You can also bet he or she was smarter than you and it already uploaded it to <a href="https://metacpan.org">CPAN</a>. 
+bet someone else got your same idea before you. You can also bet he or she was smarter than you and it was already uploaded to <a href="https://metacpan.org">CPAN</a>.
 
-Sharing early is a good principle: if you already have an idea of your module (even before implementing it), can be worth to ask in a forum dedicated to Perl (like <a href="https://www.perlmonks.org">perlmonks.org</a>) posting a RFC post (Request For Comments) or using  the dedicated website <a href="http://prepan.org/ ">prepan.org</a>(is not a crowdy place nowadays..;).
+Sharing early is a good principle: if you already have an idea for your module (even before implementing it), it can be worth asking in a forum dedicated to Perl (like <a href="https://www.perlmonks.org">perlmonks.org</a>) and posting a RFC post (Request For Comments), or using  the dedicated website like <a href="http://prepan.org/ ">prepan.org</a> (though it is not a crowdy place nowadays..;).
 
-Plan it well: it is difficult, but remember that to repair something bad planned is always a worst task.
-The basic read is in the core documentation: <a href="http://perldoc.perl.org/index-language.html">perlnewmod</a> is the place to start and <a href="http://perldoc.perl.org/perlmodstyle.html">perlmodstyle</a> is what comes next. Dont miss the basic documentation. 
+Plan it well: it is difficult, but remember that to repair something poorly planned is always a worse task.
+The base knowledge is in the core documentation: <a href="http://perldoc.perl.org/index-language.html">perlnewmod</a> is the place to start and <a href="http://perldoc.perl.org/perlmodstyle.html">perlmodstyle</a> is what comes next. Dont miss the basic documentation.
 
 If you want to read more see, in my <a href="https://www.perlmonks.org/index.pl?node_id=1202418#modules">bibliotheca</a>, the scaffold dedicated to modules.
 
-Choose carefully all your names: the module one and names of methods or functions your module exports: good code with bad named methods is many times unusable by others than the author.
+Choose your names carefully: the module name and names of methods or functions your module exports. Good code with poorly named methods is many times more unusable for others than the author.
 
 
-Programming is a matter of interfaces. sic. dot. Coding is easy engineering is hard. sic. another dot.
-You can change a million of times the implementation, you can never change how other people use your code. So plan well what you offer with your module. You can add in the future new features; you cannot remove not even one of them because someone is already using it in production. Play nice: plan well.
+Programming is a matter of interfaces. Coding is easy, engineering is hard.
+You can change the implementation a million, you can never change how other people use your code. So plan well what you offer with your module. In the future you can add new features; you cannot remove even one of them because someone may already be using it in production. Play nice: plan well.
 
-You can profit the read of a wonderful post: <a href="https://www.perlmonks.org/index.pl?node_id=553487">
+You can learn a lot from this wonderful post: <a href="https://www.perlmonks.org/index.pl?node_id=553487">
 On Interfaces and APIs</a>
 
 
