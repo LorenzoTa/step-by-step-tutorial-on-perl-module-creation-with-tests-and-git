@@ -452,7 +452,7 @@ With the above we committed everything. The status is now <code>working tree cle
 Now we link the local copy and the remote one on github: all examples you'll find, and even what github proposes to you, says <code>git remote add origin https://github.com/...</code> where <code>origin</code> is not a keyword but just a label, a name. I found this misleading and I use my github name in this place or something
 that tells me the meaning, like <code>MyFriendRepo</code>. So from now on we will use <code>YourGithubLogin</code> there.
 
-Add the remote and verify it ( with <code>-v</code> ):
+Add the remote and show it verbosely ( with <code>-v</code> ):
 <pre>
 git-client> git remote add YourGithubLogin https://github.com/YourGithubLogin/Range-Validator.git
 
