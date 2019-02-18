@@ -229,31 +229,31 @@
 <h4>foreword</h4>
 
 This tutorial is not about coding: that's it! The code, idea and implementation presented below
-are, by choice, futile, piffling and trifling ( the module resulting following this tutorial is available, archived <a href="https://github.com/LorenzoTa/Range-Validator">on its own repository</a>).
+are, by choice, futile, piffling and trifling ( the module we write following this tutorial is available, archived <a href="https://github.com/LorenzoTa/Range-Validator">in its own repository</a>).
 
-This tutorial, by other hands, tries to show to the beginner one possible path in module creation. As always in perl there are many ways to get the job done and mine is far to be the optimal one, but as
-I have encountered many difficulties to choice my own path, perhaps sharing my way can help someone else.
+This tutorial, on the other hand, tries to show the beginner one possible path in module creation. As always in perl there are many ways to get the job done and mine is far from the most optimal one, but as
+I have encountered many difficulties in choosing my own path, perhaps sharing my way can help someone else.
 
-There are other similar but different source of knowledge about module creation, notably <a href="https://www.perlmonks.org/index.pl?node_id=431702">José's Guide for creating Perl modules</a>: read this for some point i do not explore (well, read it anyway: it's worth to)
+There are other similar but different sources of knowledge about module creation, notably <a href="https://www.perlmonks.org/index.pl?node_id=431702">José's Guide for creating Perl modules</a>: read this for some points I do not explore (well, read it anyway; it's worth it)
 
 
 
 <a id="thebagoftools"></a>
 <h4>the bag of tools</h4>
 
-As for every duty, check your equipment before starting. You probably already have perl, a shell (or something less fortunate if you are on windows, like me ;) and a favourite text editor or IDE.
+As for every job, check your equipment before starting. You probably already have perl, a shell (or something less fortunate if you are on windows, like me ;) and a favourite text editor or IDE.
 
 But here in this tutorial we'll use  <code>git</code> in the command line and <a href="https://github.com">github</a> to store our work in a central point (very handy feature). So get a <code>github</code> account and a <code>git</code> client.
 
-This tutorial will focus on the importance (I'd say preminence or even predominance) of testing while developing a perl module. I wrote lonely scripts for years then I realized that even if my script seemed robust, I have no way to test them in a simple and reliable way.
+This tutorial will focus on the importance (I'd say preeminence or even predominance) of testing while developing a perl module. I wrote lonely scripts for years then I realized that even if my script seemed robust, I have no way to test them in a simple and reliable way.
 
-So we will use the core module <a href="http://perldoc.perl.org/Test/More.html">Test::More</a> and the CPAN one <a href="https://metacpan.org/pod/Test::Exception">Test::Exception</a> in our module so get it installed using your <code>cpan</code> or <code>cpanm</code> client. Take a look to <a href="http://perldoc.perl.org/Test/Simple.html">Test::Simple</a> if you are not used to test.
+So we will use the core module <a href="http://perldoc.perl.org/Test/More.html">Test::More</a> and the CPAN <a href="https://metacpan.org/pod/Test::Exception">Test::Exception</a> in our module so get it installed using your <code>cpan</code> or <code>cpanm</code> client. Take a look to <a href="http://perldoc.perl.org/Test/Simple.html">Test::Simple</a> if you are not used to test.
 
-We also use the core module <a href="http://perldoc.perl.org/Carp.html">Carp</a> to report errors from user point of view.
+We also use the core module <a href="http://perldoc.perl.org/Carp.html">Carp</a> to report errors from the user's point of view.
 
 We use <a href="https://metacpan.org/pod/Module::Starter">Module::Starter</a> to have the skeleton of our module done for us, but, as always there are valid alternatives. Install it.
 
-We'll document our module using POD (Plain Old Documentation) see <a href="https://perldoc.perl.org/perlpod.html">perlpod</a> for reference.
+We'll document our module using POD (Plain Old Documentation) see <a href="https://perldoc.perl.org/perlpod.html">perlpod</a> for a reference.
 
 
 
@@ -261,29 +261,29 @@ We'll document our module using POD (Plain Old Documentation) see <a href="https
 <h4>the plan</h4>
 
 
-Some of your programs or modules work on lists and arrays. Functions inside these programs accept ranges but while you intend what a valid ranges is ( <code>0,1,2</code> or <code>0..2</code> ) you discover that your programs crashed many times because other humans or other programs passed ranges like: <code>0,1..3,2</code> (where <code>2</code> is present twice) or <code>3,2,1</code> (and your application is silently expecting <code>1,2,3</code> ) or <code>9..1</code> or even <code>0,1,good,13..15</code> not being a range at all, or simply <code>1-3</code> being a range for the user but not for you perl code that read it as <code>-2</code>.
+Some of your programs or modules work on lists and arrays. Functions inside these programs accept ranges but while you intend them to only be simple ranges ( <code>0,1,2</code> or <code>0..2</code> ) you discover that your programs crashed many times because other humans or other programs passed ranges like: <code>0,1..3,2</code> (where <code>2</code> is present twice) or <code>3,2,1</code> (and your application is silently expecting <code>1,2,3</code> ) or <code>9..1</code> or even <code>0,1,good,13..15</code> not being a range at all, or simply <code>1-3</code> being a range for the user but not for your perl code that reads it as <code>-2</code>.
 
-Bored of the situation you plan a new module to validate ranges. <code>Range::Validator</code> is the name you choose. Your initial plan is to expose just one sub: <code>validate</code>
+Tired of the situation you plan a new module to validate ranges. <code>Range::Validator</code> is the name you choose. Your initial plan is to expose just one sub: <code>validate</code>
 
 As in masonry, you need a well prepared plan before starting excavations. Then you need points and lines drawn on the terrain: everything that makes the job complex is part of the job itself.
 
 Look around: you can
-bet someone else got your same idea before you. You can also bet he or she was smarter than you and it already uploaded it to <a href="https://metacpan.org">CPAN</a>. 
+bet someone else got your same idea before you. You can also bet he or she was smarter than you and it was already uploaded to <a href="https://metacpan.org">CPAN</a>.
 
-Sharing early is a good principle: if you already have an idea of your module (even before implementing it), can be worth to ask in a forum dedicated to Perl (like <a href="https://www.perlmonks.org">perlmonks.org</a>) posting a RFC post (Request For Comments) or using  the dedicated website <a href="http://prepan.org/ ">prepan.org</a>(is not a crowdy place nowadays..;).
+Sharing early is a good principle: if you already have an idea for your module (even before implementing it), it can be worth asking in a forum dedicated to Perl (like <a href="https://www.perlmonks.org">perlmonks.org</a>) and posting a RFC post (Request For Comments), or using  the dedicated website like <a href="http://prepan.org/ ">prepan.org</a> (though it is not a crowdy place nowadays..;).
 
-Plan it well: it is difficult, but remember that to repair something bad planned is always a worst task.
-The basic read is in the core documentation: <a href="http://perldoc.perl.org/index-language.html">perlnewmod</a> is the place to start and <a href="http://perldoc.perl.org/perlmodstyle.html">perlmodstyle</a> is what comes next. Dont miss the basic documentation. 
+Plan it well: it is difficult, but remember that to repair something poorly planned is always a worse task.
+The base knowledge is in the core documentation: <a href="http://perldoc.perl.org/index-language.html">perlnewmod</a> is the place to start and <a href="http://perldoc.perl.org/perlmodstyle.html">perlmodstyle</a> is what comes next. Dont miss the basic documentation.
 
 If you want to read more see, in my <a href="https://www.perlmonks.org/index.pl?node_id=1202418#modules">bibliotheca</a>, the scaffold dedicated to modules.
 
-Choose carefully all your names: the module one and names of methods or functions your module exports: good code with bad named methods is many times unusable by others than the author.
+Choose your names carefully: the module name and names of methods or functions your module exports. Good code with poorly named methods is many times more unusable for others than the author.
 
 
-Programming is a matter of interfaces. sic. dot. Coding is easy engineering is hard. sic. another dot.
-You can change a million of times the implementation, you can never change how other people use your code. So plan well what you offer with your module. You can add in the future new features; you cannot remove not even one of them because someone is already using it in production. Play nice: plan well.
+Programming is a matter of interfaces. Coding is easy, engineering is hard.
+You can change the implementation a million, you can never change how other people use your code. So plan well what you offer with your module. In the future you can add new features; you cannot remove even one of them because someone may already be using it in production. Play nice: plan well.
 
-You can profit the read of a wonderful post: <a href="https://www.perlmonks.org/index.pl?node_id=553487">
+You can learn a lot from this wonderful post: <a href="https://www.perlmonks.org/index.pl?node_id=553487">
 On Interfaces and APIs</a>
 
 
@@ -298,12 +298,12 @@ On Interfaces and APIs</a>
 <a id="dayonestep1"></a>
 <h4>step 1) an online repository on github</h4> 
 
-Create an empty repository on the github server named Range-Validator (they do not accept <code>::</code> in names) see <a href="https://help.github.com/articles/creating-a-new-repository/">here for instruction</a>
+Create an empty repository on github named Range-Validator (they do not accept <code>::</code> in names) see <a href="https://help.github.com/articles/creating-a-new-repository/">instructions here</a>
 
 <a id="dayonestep2"></a>
 <h4>step 2) a new module with module-starter</h4>
 
-Open a shell to your scripts location and run the program <code>module-starter</code> that comes within <code>Module::Starter</code> It wants a  mail address, the author name and, obviously the module name:
+Open a shell to your script's location and run the program <code>module-starter</code> that comes from <code>Module::Starter</code>. It wants an e-mail address, the author name, and obviously the module name:
 
 <pre>
 shell> module-starter --module Range::Validator --author MyName --email MyName@cpan.org
@@ -322,7 +322,7 @@ Added to MANIFEST: xt/boilerplate.t
 Created starter directories and files
 
 </pre>
-A lot of work done for us! The <code>module-starter</code> program created all the above files into a new folder named <code>Range-Validator</code> let's see the content:
+A lot of work done for us! The <code>module-starter</code> program created all the above files in a new folder named <code>Range-Validator</code>. Let's see the content:
 
 <pre>
 ---Range-Validator
@@ -346,7 +346,7 @@ A lot of work done for us! The <code>module-starter</code> program created all t
    |----xt
            boilerplate.t
 </pre>
-We now have a good starting point to work on. Spend some minute to review the content of the files to get an idea.
+We now have a good starting point to work on. Spend some time to review the contents of the files to get familiar with them.
 
 
 
@@ -364,7 +364,7 @@ git-client> git init
 Initialized empty Git repository in /path/to/Range-Validator/.git/
 
 </pre>
-Nothing  impressive.. What happened? The above command created a <code>.git</code> directory, ~15Kb of infos, to take track of all changes you'll make to your files inside the <code>Range-Validator</code> folder. In other words it created a git repository. Empty. Empty?!? And all my files?
+Nothing impressive.. What happened? The above command created a <code>.git</code> directory, ~15kb of info, to track all changes you'll make to your files inside the <code>Range-Validator</code> folder. In other words it created a git repository. Empty. Empty?!? And all my files?
 
 It's time for a command you'll use many, many times: <code>git status</code>
 
@@ -389,11 +389,11 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 </pre>
-Many terms in the above output would be worth to be explained, but not by me. Just be sure to understand what <code>branch</code>, <code>commit</code>, <code>tracked/untracked</code> means in the git world. Luckily the command is so sweet to add a hint for us as last line: <code>(use "git add" to track)</code> 
+Many terms in the above output would be worth explaining, but not by me. Just be sure to understand what <code>branch</code>, <code>commit</code>, <code>tracked/untracked</code> means in the git world. Luckily the command is so sweet to add a hint for us in the last line: <code>(use "git add" to track)</code> 
 
-Git is built for this reason: it can track all modifications we do to code base and it take a picture (a snapshot in git terminology) of the whole code base everytime we commit these changes. But <code>git init</code> initialized an empty repository: we must tell git which files to add to tracked ones.
+Git is built for this reason: it can track all modifications we do to the code base and it takes a picture (a snapshot in git terminology) of the whole code base every time we commit changes. But <code>git init</code> initialized an empty repository; we must tell git which files to add to the tracked ones.
 
-We simply want to track all files <code>module-starter</code> created for us: <code>git add .</code> add the current directory and all its content to tracked content. Run it and check the status again:
+We simply want to track all files <code>module-starter</code> created for us: <code>git add .</code> adds the current directory and all its contents to the tracked content. Run it and check the status again:
 
 <pre>
 git-client> git add .
@@ -449,8 +449,8 @@ nothing to commit, working tree clean
 With the above we committed everything. The status is now <code>working tree clean</code> what better news for a lumberjack used to examine daily tons of dirty logs? ;)
 
 
-Now we link the local copy and the remote one on github: all examples you find, and even what github propose to you, tell <code>git remote add origin https://github.com/...</code> where <code>origin</code> is not a keyword but just a label, a name: I found this misleading and I use my github name in this place or something
-that tell me the meaning, like <code>MyFriendRepo</code>. So from now on we will use <code>YourGithubLogin</code> there.
+Now we link the local copy and the remote one on github: all examples you'll find, and even what github proposes to you, says <code>git remote add origin https://github.com/...</code> where <code>origin</code> is not a keyword but just a label, a name. I found this misleading and I use my github name in this place or something
+that tells me the meaning, like <code>MyFriendRepo</code>. So from now on we will use <code>YourGithubLogin</code> there.
 
 Add the remote and verify it ( with <code>-v</code> ):
 <pre>
@@ -462,9 +462,9 @@ YourGithubLogin       https://github.com/YourGithubLogin/Range-Validator.git (fe
 YourGithubLogin       https://github.com/YourGithubLogin/Range-Validator.git (push)
 
 </pre>
-The verify operation gives us two hints: for the remote repository that we call <code>YourGithubLogin</code> we can do <code>fetch</code> (import all changes you still have not, from the remote repository to your local copy) or <code>push</code> (export your local copy to the remote repository).
+The verify operation gives us two hints: for the remote repository that we call <code>YourGithubLogin</code> we can do <code>fetch</code> (import all changes you don't have locally from the remote repository) or <code>push</code> (export your local copy to the remote repository).
 
-Since on github there is nothing and locally we have the whole code base, we definitively want to <code>push</code> and we can do that if and only if, we have the permission in the remote repository. It's our own repository, so no problem (git will ask for the github password). The <code>push</code> wants to know which branch to push: we only have <code>master</code> so:
+Since on github there is nothing and locally we have the whole code base, we definitively want to <code>push</code> and we can do that if and only if, we have permission to push in the remote repository. It's our own repository, so no problem (git will ask for the github password). The <code>push</code> wants to know which branch to push; we only have <code>master</code> so:
 
 <pre>
 git-client> git push YourGithubLogin master
@@ -487,9 +487,9 @@ remote:
 To https://github.com/YourGithubLogin/Range-Validator.git
  * [new branch]      master -> master
 </pre>
-Go to the github website to see what happened: the whole code base is in the online repository too, updated to our last commit (aka our first, unique commit for the moment). From now on we can work on our code from any machine having a <code>git</code> client. To do so we must be diligent and committing and pushing our changes when is the moment, to maintain the online repository up to date. Clean yard, happy master mason.
+Go to the github website to see what happened: the whole code base is in the online repository too, updated to our last commit (a.k.a. our first and only commit for the moment). From now on we can work on our code on any machine that has a <code>git</code> client. To do so we must be diligent and commit and push our changes when it is time, to keep the online repository up to date. Clean yard, happy master mason.
 
-A whole day is passed, well.. two days, and we did not wrote a single line of perl code: we are starting the right way! Time to go to sleep with a well prepared playground.
+A whole day has passed, well.. two days, and we did not write a single line of perl code yet. We are starting the right way! Time to go to sleep with a well prepared playground.
 
 
 
