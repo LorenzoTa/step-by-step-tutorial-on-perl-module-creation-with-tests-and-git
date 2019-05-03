@@ -2140,7 +2140,7 @@ Just an example: install <a href="https://metacpan.org/pod/Module::CPANTS::Analy
 <a id="dayeightoptionone"></a>
 <h4>option one - the bare bone module</h4>
 
-This is option we choosed for the above example and, even if it is the less favorable one, we used this form for the extreme easy. The module is just a container of subs and all subs are available in the program tha uses our module but only using their fully qualified name, ie including the name space where they are defined: <code>Range::Validator::validate</code> was the syntax we used all over the tutorial.
+This is option we choosed for the above example and, even if it is the less favorable one, we used this form for the extreme easy. The module is just a container of subs and all subs are available in the program that uses our module but only using their fully qualified name, ie including the name space where they are defined: <code>Range::Validator::validate</code> was the syntax we used all over the tutorial.
 
 Nothing bad if the above behaviour is all you need.
 
