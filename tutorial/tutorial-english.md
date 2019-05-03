@@ -2047,7 +2047,7 @@ Push recent changes into the online repository.
 <a id="daysevenstep4"></a>
 <h4>step 4) another kind of test: POD and POD coverage</h4>
 
-In our <code>/t</code> folder we still have two tests we did not run: shame! <code>module-starter</code> created for us <code>pod.t</code> and <code>pod-coverage.t</code> The first one checks every POD in our distribution has no errors and the second ensures that all relevant files in your distribution are appropriately documented in POD documentation. Thanks for this. Run them:
+In our <code>/t</code> folder we still have two tests we did not run: shame! <code>module-starter</code> created for us <code>pod.t</code> and <code>pod-coverage.t</code> The first one checks every POD in our distribution has no errors and the second ensures that all relevant files in your distribution are appropriately documented in POD documentation. Thanks for this. Run them (after installing the necessary modules <code>Test::Pod</code> and <code>Test::Pod::Coverage</code>):
 
 <pre>
 shell> prove -l -v ./t/pod.t
