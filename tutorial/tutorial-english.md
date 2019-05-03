@@ -1823,7 +1823,7 @@ B - Yeah man, for a coffee, as always.
 
 So we add a line in the top of the module, just after VERSION: <code>our $WARNINGS = 0;</code> to let dev B to trigger our warnings. We commit even this small change.
 
-Then we add to the sub a <code>carp</code> call triggered if <code>our $WARNINGS == 1;</code> and if <code>@_ == 0</code> and we add this as <code>elsif</code> condition:
+Then we add to the sub a <code>carp</code> call triggered if <code>$WARNINGS == 1</code> and if <code>@_ == 0</code> and we add this as <code>elsif</code> condition:
 
 <pre>
 	# assume we have a string if we receive only one argument
