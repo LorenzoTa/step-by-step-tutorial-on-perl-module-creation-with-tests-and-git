@@ -593,7 +593,7 @@ BEGIN {
 diag( "Testing Range::Validator $Range::Validator::VERSION, Perl $], $^X" );
 
 </pre>
-This perl program use strict and wanrings (you already know they are friends, do you?) then load the core module <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> which generally
+This perl program use strict and warnings (you already know they are friends, do you?) then load the core module <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> which generally
 requires that you declare how many tests you intend to run ( <code>plan tests => 1</code> ) then inside the <code>BEGIN</code> block use its method <code>use_ok</code> that loads our own module and in case of failure print "Bail out!\n" aka "everything went wrong, leave the boat".
 
 If the above succeeded <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> calls <code>diag</code> that emits a note with the text specified, useful to have while reviewing test output. The module also has the <code>note</code> method that I prefer. Go to the module documentation to have an idea of <a href="https://perldoc.perl.org/Test/More.html">Test::More</a>
@@ -768,9 +768,9 @@ sub validate{
 }
 
 </pre>
-The above is straightforward (if ugly): we get something in  via <code>@_</code> (a string or a list) and we return something via <code>return @range</code> To accomplish this we initialize <code>$range</code> to hold our string.
+The above is straightforward (if ugly): we get something in via <code>@_</code> (a string or a list) and we return something via <code>return @range</code> To accomplish this we initialize <code>$range</code> to hold our string.
 
-A good principle in loops is "put exit conditions early" and following this principle we put our our die conditions as soon as possible, ie after the if/else check.
+A good principle in loops is "put exit conditions early" and following this principle we put our die conditions as soon as possible, ie after the if/else check.
 
 But we dont want to die with an ugly message like <code>Died at ../Range/Validator.pm line x</code> ie from the module perspective: we want to inform the user where his code provoked our module to die.
 
