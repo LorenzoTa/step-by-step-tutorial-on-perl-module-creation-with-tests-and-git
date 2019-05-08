@@ -593,7 +593,7 @@ BEGIN {
 diag( "Testing Range::Validator $Range::Validator::VERSION, Perl $], $^X" );
 
 </pre>
-This perl program use strict and wanrings (you already know they are friends, do you?) then load the core module <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> which generally
+This perl program use strict and warnings (you already know they are friends, do you?) then load the core module <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> which generally
 requires that you declare how many tests you intend to run ( <code>plan tests => 1</code> ) then inside the <code>BEGIN</code> block use its method <code>use_ok</code> that loads our own module and in case of failure print "Bail out!\n" aka "everything went wrong, leave the boat".
 
 If the above succeeded <a href="https://perldoc.perl.org/Test/More.html">Test::More</a> calls <code>diag</code> that emits a note with the text specified, useful to have while reviewing test output. The module also has the <code>note</code> method that I prefer. Go to the module documentation to have an idea of <a href="https://perldoc.perl.org/Test/More.html">Test::More</a>
@@ -768,9 +768,9 @@ sub validate{
 }
 
 </pre>
-The above is straightforward (if ugly): we get something in  via <code>@_</code> (a string or a list) and we return something via <code>return @range</code> To accomplish this we initialize <code>$range</code> to hold our string.
+The above is straightforward (if ugly): we get something in via <code>@_</code> (a string or a list) and we return something via <code>return @range</code> To accomplish this we initialize <code>$range</code> to hold our string.
 
-A good principle in loops is "put exit conditions early" and following this principle we put our our die conditions as soon as possible, ie after the if/else check.
+A good principle in loops is "put exit conditions early" and following this principle we put our die conditions as soon as possible, ie after the if/else check.
 
 But we dont want to die with an ugly message like <code>Died at ../Range/Validator.pm line x</code> ie from the module perspective: we want to inform the user where his code provoked our module to die.
 
@@ -1823,7 +1823,7 @@ B - Yeah man, for a coffee, as always.
 
 So we add a line in the top of the module, just after VERSION: <code>our $WARNINGS = 0;</code> to let dev B to trigger our warnings. We commit even this small change.
 
-Then we add to the sub a <code>carp</code> call triggered if <code>our $WARNINGS == 1;</code> and if <code>@_ == 0</code> and we add this as <code>elsif</code> condition:
+Then we add to the sub a <code>carp</code> call triggered if <code>$WARNINGS == 1</code> and if <code>@_ == 0</code> and we add this as <code>elsif</code> condition:
 
 <pre>
 	# assume we have a string if we receive only one argument
@@ -2047,7 +2047,7 @@ Push recent changes into the online repository.
 <a id="daysevenstep4"></a>
 <h4>step 4) another kind of test: POD and POD coverage</h4>
 
-In our <code>/t</code> folder we still have two tests we did not run: shame! <code>module-starter</code> created for us <code>pod.t</code> and <code>pod-coverage.t</code> The first one checks every POD in our distribution has no errors and the second ensures that all relevant files in your distribution are appropriately documented in POD documentation. Thanks for this. Run them:
+In our <code>/t</code> folder we still have two tests we did not run: shame! <code>module-starter</code> created for us <code>pod.t</code> and <code>pod-coverage.t</code> The first one checks every POD in our distribution has no errors and the second ensures that all relevant files in your distribution are appropriately documented in POD documentation. Thanks for this. Run them (after installing the necessary modules <code>Test::Pod</code> and <code>Test::Pod::Coverage</code>):
 
 <pre>
 shell> prove -l -v ./t/pod.t
@@ -2140,7 +2140,7 @@ Just an example: install <a href="https://metacpan.org/pod/Module::CPANTS::Analy
 <a id="dayeightoptionone"></a>
 <h4>option one - the bare bone module</h4>
 
-This is option we choosed for the above example and, even if it is the less favorable one, we used this form for the extreme easy. The module is just a container of subs and all subs are available in the program tha uses our module but only using their fully qualified name, ie including the name space where they are defined: <code>Range::Validator::validate</code> was the syntax we used all over the tutorial.
+This is option we choosed for the above example and, even if it is the less favorable one, we used this form for the extreme easy. The module is just a container of subs and all subs are available in the program that uses our module but only using their fully qualified name, ie including the name space where they are defined: <code>Range::Validator::validate</code> was the syntax we used all over the tutorial.
 
 Nothing bad if the above behaviour is all you need.
 
