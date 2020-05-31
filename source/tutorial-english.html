@@ -303,7 +303,7 @@ Create an empty repository on github named Range-Validator (they do not accept <
 <a id="dayonestep2"></a>
 <h4>step 2) a new module with module-starter</h4>
 
-Open a shell to your script's location and run the program <code>module-starter</code> that comes from <code>Module::Starter</code>. It wants an e-mail address, the author name, and obviously the module name:
+Open a shell to your script's location and run the program <a href="https://metacpan.org/pod/module-starter">module-starter</a> that comes from <code>Module::Starter</code>. It wants an e-mail address, the author name, and obviously the module name:
 
 <pre>
 shell> module-starter --module Range::Validator --author MyName --email MyName@cpan.org
@@ -499,7 +499,7 @@ A whole day has passed, well.. two days, and we did not write a single line of p
 <a id="daytwostep1"></a>
 <h4>step 1) POD documentation</h4> 
 
-Well first of all some cleaning: open you local copy of the module <code>/path/to/Range-Validator/lib/Range/Validator.pm</code> in your text editor or IDE. Personally  I like the POD documentation to be all together after the <code>__DATA__</code> token rather than interleaved with the code. Inside the code I only like to have comments. POD documentation is for the user, comments are for you! After a week or month you'll never remember what your code is doing: comment it explaining what is happening.
+Well first of all some cleaning: open your local copy of the module <code>/path/to/Range-Validator/lib/Range/Validator.pm</code> in your text editor or IDE. Personally  I like the POD documentation to be all together after the <code>__DATA__</code> token rather than interleaved with the code. Inside the code I only like to have comments. POD documentation is for the user, comments are for you! After a week or month you'll never remember what your code is doing: comment it explaining what is happening.
 
 So go to the end of the module where the line is the final <code>1;</code> ( remember all modules must return a true value in their last statement) and add in a new line the <code>__DATA__</code> token. Move all POD after this token. Also remove the POD and the code of <code>function2</code>
 
@@ -620,13 +620,13 @@ ok 1 - use Range::Validator;
 
 </pre>
 Wow! We ran our first test! ..Yes, but in the wrong way. Well not exactly the wrong way but not the way tests are run during installation.
-Test are run through a TAP harness (TAP stands for Test Anything Protocol and is present in perl since forever: perl was born the right way ;).
+Tests are run through a TAP harness (TAP stands for Test Anything Protocol and is present in perl since forever: perl was born the right way ;).
 
 With your perl distribution you have the <a href="https://perldoc.perl.org/prove.html">prove</a> command (see its documentation) that runs tests through a TAP harness. So we can use it.
 
 We can call <a href="https://perldoc.perl.org/prove.html">prove</a> the very same way we called perl: <code>prove -I ./lib ./t/00-load.t</code> but we are lazy and we spot <code>prove -l</code> which has the same effect as <code>prove -I ./lib</code> i.e. include <code>./lib</code> in <code>@INC</code>
 
-Run the very same test through <a href="https://perldoc.perl.org/prove.html">prove</a> instead of perl and you will see slightly different output:
+Run the very same test through <a href="https://perldoc.perl.org/prove.html">prove</a> instead of perl and you will see a slightly different output:
 
 <pre>
 shell> prove -l ./t/00-load.t
@@ -887,19 +887,19 @@ WriteMakefile(
 );
 
 </pre>
-This file is run on the target system trying to install your module. It's vaste matter and you can find many, many useful informations in the core documentation of <a href="https://perldoc.perl.org/ExtUtils/MakeMaker.html">ExtUtils::MakeMaker</a> and in the <a href="https://perldoc.perl.org/ExtUtils/MakeMaker/Tutorial.html">ExtUtils::MakeMaker::Tutorial</a> and, as always in perl, there many ways to do it.
+This file is run on the target system trying to install your module. It's vast matter and you can find many, many useful informations in the core documentation of <a href="https://perldoc.perl.org/ExtUtils/MakeMaker.html">ExtUtils::MakeMaker</a> and in the <a href="https://perldoc.perl.org/ExtUtils/MakeMaker/Tutorial.html">ExtUtils::MakeMaker::Tutorial</a> and, as always in perl, there many ways to do it.
 
-In our simple case we only need to know few facts about <code>BUILD_REQUIRES</code> and <code>PREREQ_PM</code> fields.
+In our simple case we only need to know a few facts about <code>BUILD_REQUIRES</code> and <code>PREREQ_PM</code> fields.
 
-The first one lists into a hash all modules and their version needed to build up our module, building includes testing, so if you need some module during tests it is the place where insert dependencies. The <code>module-starter</code> program added <code>'Test::More' => '0'</code> entry for us. This is the right place to state that we intend to use <a href="https://metacpan.org/pod/Test::Exception">Test::Exception</a> CPAN module during tests.
+The first one lists into a hash all modules and their version needed to build up our module, building includes testing, so if you need some module during tests it is the place where to insert dependencies. The <code>module-starter</code> program added <code>'Test::More' => '0'</code> entry for us. This is the right place to state that we intend to use <a href="https://metacpan.org/pod/Test::Exception">Test::Exception</a> CPAN module during tests.
 
-By other hand <code>PREREQ_PM</code> lists modules and their minimal versions needed to run your module. As you can see it's a different thing: to run <code>Range::Validator</code> you never need <code>Test::Exception</code> but, for example you 'll need <code>Carp</code>
+On the other hand <code>PREREQ_PM</code> lists modules and their minimal versions needed to run your module. As you can see it's a different thing: to run <code>Range::Validator</code> you never need <code>Test::Exception</code> but, for example you 'll need <code>Carp</code>
 
 Even if <code>Carp</code> it's a core module is a good practice to include it into <code>PREREQ_PM</code> 
 
 Read a very good post about dependencies <a href="https://www.perlmonks.org/?node_id=946044">Re: How to specify tests dependencies with Makefile.PL?</a>
 
-Cleaning example lines and given all the above, we will modify <code>Makefile.PL</code> as follow:
+Removing the example lines and given all the above, we will modify <code>Makefile.PL</code> as follow:
 
 <pre>
 use 5.006;
@@ -929,13 +929,13 @@ WriteMakefile(
     clean => { FILES => 'Range-Validator-*' },
 );
 </pre>
-So the moral is: when you add a dependency needed to run your module or to test it remember to update <code>Makefile.PL</code> correspondent part.
+So the moral is: when you add a dependency needed to run your module or to test it remember to update <code>Makefile.PL</code> corresponding part.
 
 
 
 <a id="daythreestep4"></a>
 <h4>step 4) run the new test</h4> 
-Ok, is the above test ok? It returns all we expect? Try it using <code>prove -l</code> but specifying also <code>-v</code> to be verbose and the filename of our new test (now we dont want all test run, just the one we are working on):
+Ok, is the above test ok? It returns all we expect? Try it using <code>prove -l</code> but specifying also <code>-v</code> to be verbose and the filename of our new test (now we don't want to run all tests, just the one we are working on):
 
 <pre>
 shell> prove -l -v ./t/01-validate.t
@@ -957,7 +957,7 @@ Result: PASS
 <a id="daythreestep5"></a>
 <h4>step 5) commit, add new files and push with git</h4> 
 
-What we need more from our first day of coding? To check our status and to synchronize our online repository (pay attention to the following commands because we have a new, untracked file!):
+What more do we need from our first day of coding? To check our status and to synchronize our online repository (pay attention to the following commands because we have a new, untracked file!):
 
 <pre>
 git-client> git status
@@ -1031,7 +1031,7 @@ remote: Resolving deltas: 100% (5/5), completed with 4 local objects.
 To https://github.com/YourGithubLogin/Range-Validator
    49a0690..5083ec3  master -> master
 </pre>
-What a day! We added six lines of code and an entire test file! Are we programming too much? Probably no but we are doing it in a robust way and we discovered it can be hard work. In perl hard work is justified only by (future) laziness and we are doing all these work because we are lazy and we do not want to waste our time when, in a month or a year, we need to take this code base again to enhance it or to debug it. So now it's time for the bed and for deserved colorful dreams.
+What a day! We added six lines of code and an entire test file! Are we programming too much? Probably not but we are doing it in a robust way and we discovered it can be hard work. In perl hard work is justified only by (future) laziness and we are doing all these work because we are lazy and we do not want to waste our time when, in a month or a year, we need to take this code base again to enhance it or to debug it. So now it's time for the bed and for deserved colorful dreams.
 
 
 
@@ -1049,7 +1049,7 @@ Good documentation is like an educated people, while poor documentation is like 
 
 The same is for your module users: they hope and expect to find a good documentation and to write it is our duty. Dot.
 
-Documentation content, in my little experience, can be impacted a lot for even small changes in the code or interface so, generally I write the larger part of the docs when the implementation or interface is well shaped. But, by other hand, a good approach is to put in the docs every little statement that will be true since the very beginning of your module development. At the moment we can state our <code>validate</code> sub accepts both strings and ranges and always returns an array.
+Documentation content, in my little experience, can be impacted a lot for even small changes in the code or interface so, generally I write the larger part of the docs when the implementation or interface is well shaped. But, on the other hand, a good approach is to put in the docs every little statement that will be true since the very beginning of your module development. At the moment we can state our <code>validate</code> sub accepts both strings and ranges and always returns an array.
 
 At the moment the relevant part of the POD documentation is:
 
@@ -1086,7 +1086,7 @@ We do not need <code>=cut</code> anymore because we do not have POD in blocks in
 <a id="dayfourstep2"></a>
 <h4>step 2) git status again and commit again</h4> 
 
-Since we are now very fast with <code>git</code> commands, let's <code>commit</code> this little change; the <code>push</code> to the remote repository can be left for the end of work session. So <code>status</code> (check it frequently!) and <code>commit</code>
+Since we are now very fast with <code>git</code> commands, let's <code>commit</code> this little change; the <code>push</code> to the remote repository can be left for the end of the work session. So run <code>status</code> (check it frequently!) and <code>commit</code>
 
 <pre>
 git-client> git status
@@ -1113,7 +1113,7 @@ git-client> git commit -a -m "initial POD to document validate function"
 <a id="dayfourstep3"></a>
 <h4>step 3) more code...</h4> 
 
-Now it's time to add more checks for the incoming string: we do not accept a lone dot between non dots, nor even more than two dots consecutively:
+Now it's time to add more checks for the incoming string: we do not accept a lone dot between non dots, nor do we accept more than two dots consecutively:
 
 <pre>
 # not allowed a lone .
@@ -1122,7 +1122,7 @@ Now it's time to add more checks for the incoming string: we do not accept a lon
 	croak "invalid range [$range] (more than 2 .)!" if $range =~ /[^.]+\.{3}/;
 		
 </pre>
-The whole sub now look like:
+The whole sub now looks like:
 
 <pre>
 sub validate{
@@ -1189,7 +1189,7 @@ Files=1, Tests=5,  0 wallclock secs ( 0.06 usr +  0.03 sys =  0.09 CPU)
 Result: PASS
 
 </pre>
-Fine! But.. to much repetitions in the test code. Are not we expected to be DRY (Dont Repeat Yourself)? Yes we are and since we have been so lazy to put <code>use Test::More qw(no_plan)</code> we can add a good loop of tests (replace the last two <code>dies_ok</code> with the following code in the test file):
+Fine! But.. to much repetitions in the test code. Are we not expected to be DRY (Dont Repeat Yourself)? Yes we are and since we have been so lazy to put <code>use Test::More qw(no_plan)</code> we can add a good loop of tests (replace the last two <code>dies_ok</code> with the following code in the test file):
 
 <pre>
 foreach my $string ( '1.2', '0..2,5.6,8', '1,2,.,3', '.' ){
@@ -1406,7 +1406,7 @@ To https://github.com/YourGithubLogin/Range-Validator
 
    
 </pre>
-Today we committed twice, do you remember? first time just the POD we added for the sub and second time just few moments ago.
+Today we committed twice, do you remember? first time just the POD we added for the sub and the second time just few moments ago.
 We pushed just one time. What's really now in the online repository?
 
 Go to the online repository, Insights, Network: the last two dots on the line segment are our two commits, pushed together in a single push. Handy, no? Click on the second-last dot and you will see the detail of the commit concerning the POD, with lines we removed in red and lines we added in green. Commits are free: committing small changes frequently is better than commit a lot of changes all together.
@@ -1493,7 +1493,7 @@ sub validate{
 }
 
 </pre>
-New features are worth to be pushed on the online repository: you know how can be done. Do it.
+New features are worth to be pushed on the online repository: you know how it can be done. Do it.
 
 
 
@@ -1501,7 +1501,7 @@ New features are worth to be pushed on the online repository: you know how can b
 <a id="dayfivestep2"></a>
 <h4> step 2) a git excursus</h4>
 
-Did you follow my small advices about git committing and meaningful messages? If so it's time to see why is better to be diligent: with <code>git log</code> (which man page is probably longer than this guide..) you can review a lot about previous activities:
+Did you follow my small advices about git committing and meaningful messages? If so it's time to see why it is better to be diligent: with <code>git log</code> (which man page is probably longer than this guide..) you can review a lot about previous activities:
 
 <pre>
 git-client> git log HEAD --oneline
@@ -1518,7 +1518,7 @@ a6dc557 initial POD to document validate function
 </pre>
 This is definitevely handy. <code>HEAD</code> is where your activity is focused in this moment. Try to remove the <code>--oneline</code> switch to see also all users and dates of each commit.
 
-As you can understand git is a vaste world: explore it to suit your needs. This is not a git guide ;)
+As you can understand git is a vast world: explore it to suit your needs. This is not a git guide ;)
 
 
 
@@ -1707,7 +1707,7 @@ sub validate{
 </pre>
 Is our change safe? Well we have a test suit: <code>prove -l -v</code> will tell you if the change impacts the test suit (if tests are poor you can never be sure).
 
-Now our module is ready for production. It just lacks of some good documentation. Not a big deal, but is our duty to document what the sub does effectively.
+Now our module is ready for production. It just lacks of some good documentation. Not a big deal, but it is our duty to document what the sub does effectively.
 
 Add to the POD of our sub:
 
@@ -1797,13 +1797,13 @@ actions_to_activate_account( @valid_range );
 Right? The module goes in production and 98% of errors from the foreign part of the code base disappeared. Only 98%?
 Yes.. 
 
-Miss A of department Z call your boss in a berserk state: not all their errors are gone away. They use the list form but Miss A and the developer B are sure no empty lists are passed to your validate sub. You call the developer B, a good fellow, who explain you that list are generated from  a database field that cannot be empty (NOT NULL constraint in the database):
+Miss A of department Z call your boss in a berserk state: not all their errors are gone away. They use the list form but Miss A and the developer B are sure no empty lists are passed to your validate sub. You call the developer B, a good fellow, who explains you that lists are generated from  a database field that cannot be empty (NOT NULL constraint in the database):
 
 You - Listen B, if I emit a warning you'll be able to trap which list generated from the database provoked it?
 
 B - Sure! Can you add this?
 
-You - Yes, for sure. I can use a variable in Range::Validator namespace, let's name it <code>warnings</code> and you'll set it to a true value and only you, and not the rest of the company, will see errors on STDERR. Ok?
+You - Yes, for sure. I can use a variable in the <code>Range::Validator</code> namespace, let's name it <code>warnings</code> and you'll set it to a true value and only you, and not the rest of the company, will see errors on STDERR. Ok?
 
 B - Fantastic! I'll add the variable as soon as you tell me.
 
@@ -1830,7 +1830,7 @@ Then we add to the sub a <code>carp</code> call triggered if <code>$WARNINGS == 
 		# STRING PART ...
 	}
 	elsif ( $WARNINGS == 1 and @_ == 0 ){
-		carp "Empty list passed in! We assume all element will be processed.";
+		carp "Empty list passed in! We assume all elements will be processed.";
 	}
 	# otherwise we received a list
 	else{
@@ -1848,9 +1848,9 @@ Git status, git commit on your own.
 <a id="daysixstep3"></a>	
 <h4>step 3) prepare the fishing road: add a dependency for our test</h4>
 
-To grab <code>STDERR</code> in test we have to add a dependency to <code>Capture::Tiny</code> module which is able, with its method <code>capture</code> to catch  <code>STDOUT</code>  <code>STDERR</code> and  results emitted by an external command or a chunk of perl code. Handy and tiny module.
+To grab <code>STDERR</code> in the test we have to add a dependency to <code>Capture::Tiny</code> module which is able, with its method <code>capture</code> to catch  <code>STDOUT</code>  <code>STDERR</code> and  results emitted by an external command or a chunk of perl code. Handy and tiny module.
 
-Do you remeber the place to specify a dependency? Bravo! Is in <code>Makefile.PL</code> and we did the same in "day three step 3" when we added two modules to the <code>BUILD_REQUIRES</code> hash. Now we add <code>Capture::Tiny</code> to this part (remeber to specify module name in a quoted string):
+Do you remember the place to specify a dependency? Bravo! It is in <code>Makefile.PL</code> and we did the same in "day three step 3" when we added two modules to the <code>BUILD_REQUIRES</code> hash. Now we add <code>Capture::Tiny</code> to this part (remember to specify the module name in a quoted string):
 
 <pre>
 BUILD_REQUIRES => {
@@ -1956,7 +1956,7 @@ Following tests are not needed to install or use your module but to help you spo
 
 In the the "day one - preparing the ground" we used <code>module-starter</code> to create the base of our module. Under the <code>/t</code> folder the program put three test we did not seen until now: <code>manifest.t</code> <code>pod-coverage.t</code> and <code>pod.t</code>  
 
-These three tests are here for us and they will help us to check our module distribution is complete. Let's start from the first
+These three tests are here for us and they will help us to check that our module distribution is complete. Let's start from the first
 
 <pre>
 shell> prove ./t/manifest.t
@@ -1966,7 +1966,7 @@ Files=1, Tests=0,  0 wallclock secs ( 0.03 usr +  0.01 sys =  0.05 CPU)
 Result: NOTESTS
 
 </pre>
-Ok, no test run, just skipped. Go to view what is inside the test: it skips all actions unless <code>RELEASE_TESTING</code> environment variable is set. It also will complain unless a minimal version of <code>Test::CheckManifest</code> is installed. So set this variable in the shell (how to do this depends on your operating system: linux users probably need <code>export RELEASE_TESTING=1</code> while windows ones will use <code>set  RELEASE_TESTING=1</code>) and use your CPAN client to install the required module (normally <code>cpan Test::CheckManifest</code> is all you need) and rerun the test again:
+Ok, no test run, just skipped. Go to view what is inside the test: it skips all actions unless the <code>RELEASE_TESTING</code> environment variable is set. It also will complain unless a minimal version of <code>Test::CheckManifest</code> is installed. So set this variable in the shell (how to do this depends on your operating system: linux users probably need <code>export RELEASE_TESTING=1</code> while windows ones will use <code>set  RELEASE_TESTING=1</code>) and use your CPAN client to install the required module (normally <code>cpan Test::CheckManifest</code> is all you need) and rerun the test again:
 
 <pre>
 shell> prove ./t/manifest.t
@@ -1980,10 +1980,10 @@ shell> prove ./t/manifest.t
 </pre>
 Omg?! What is all that output? The test complains about a lot of files that are present in the filesystem, in our module folder but are not specified in the <code>MANIFEST</code> file. This file contains a list (one per line) of files contained within the tarball of your module.
 
-In the above output we have seen a lot, if not all, files under the <code>.git</code> directory. Obviously we do not want them included in our module distribution. How can we skip them? Using <code>MANIFEST.SKIP</code> file that basically contains regular expressions describing which files should be excluded from the distribution.
+In the above output we have seen a lot, if not all, files under the <code>.git</code> directory. Obviously we do not want them included in our module distribution. How can we skip them? Using the <code>MANIFEST.SKIP</code> file that basically contains regular expressions describing which files should be excluded from the distribution.
 
 So go create this file in the main folder of the module and add inside it a line with a regex saying we do not want the <code>.git</code> directory:
-<code>^\.git\/</code> and add this file with <code>git add MANIFEST.SKIP</code> and commit this important change.
+<code>^\\.git\/</code> and add this file with <code>git add MANIFEST.SKIP</code> and commit this important change.
 
 Rerun the test (added some newlines for readability):
 
@@ -2079,7 +2079,7 @@ Result: PASS
 <a id="daysevenstep5"></a>
 <h4>step 5) some README and final review of the work</h4>
 
-The <code>README</code> must contain some general information about the module. Users can read this file via <code>cpan</code> client so put a minimal description in it. Gihub website use it as default page, so it is useful have some meningful text. Someone generates the text from the POD section of the module. Put a short description, maybe the sysnopsis and commit the change. Push it online.
+The <code>README</code> must contain some general information about the module. Users can read this file via a <code>cpan</code> client so put a minimal description in it. The GitHub website uses it as a default page, so it is useful have some meningful text. Someone generates the text from the POD section of the module. Put a short description, maybe the synopsis and commit the change. Push it online.
 
 Now we can proudly look at our commits history in a <code>--reverse</code> order:
 
@@ -2112,7 +2112,7 @@ e3feb61 removed xt/boilerplate.t
 3c0da4f (HEAD -> master, YourGithubLogin/master) modified README
 
 </pre>
-A good glance of two dozens of commits! We have done a good job, even if with some errors: committing multiple changes in different part of the project (like in our third commit) is not wise: better atomical commits. We have also some typo in commit messages.. 
+A good glance of two dozens of commits! We have done a good job, even if with some errors: committing multiple changes in different part of the project (like in our third commit) is not wise: it is better to do atomical commits. We have also some typos in the commit messages..
 
 
 
@@ -2122,7 +2122,7 @@ A good glance of two dozens of commits! We have done a good job, even if with so
 <a id="daysevenstep6"></a>
 <h4>step 6) try a real CPAN client installation</h4>
 
-It's now time to see if our module can be installaed by a cpan client. Nothing easier: if you are in the distribution folder extracted from a tarball created by <code>make dist</code>, just run <code>cpan .</code> and enjoy the output (note that this command will modify the content of the directory!).
+It's now time to see if our module can be installed by a CPAN client. Nothing is easier: if you are in the distribution folder extracted from a tarball created by <code>make dist</code>, just run <code>cpan .</code> and enjoy the output (note that this command will modify the content of the directory!).
 
 
 <a id="daysevenstep7"></a>
@@ -2138,7 +2138,7 @@ Just an example: install <a href="https://metacpan.org/pod/Module::CPANTS::Analy
 <a id="dayeightoptionone"></a>
 <h4>option one - the bare bone module</h4>
 
-This is option we choosed for the above example and, even if it is the less favorable one, we used this form for the extreme easy. The module is just a container of subs and all subs are available in the program that uses our module but only using their fully qualified name, ie including the name space where they are defined: <code>Range::Validator::validate</code> was the syntax we used all over the tutorial.
+This is the option we choosed for the above example and, even if it is the less favorable one, we used this form since it is extremely easy. The module is just a container of subs and all subs are available in the program that uses our module but only using their fully qualified name, ie including the name space where they are defined: <code>Range::Validator::validate</code> was the syntax we used all over the tutorial.
 
 Nothing bad if the above behaviour is all you need.
 
@@ -2150,11 +2150,11 @@ Nothing bad if the above behaviour is all you need.
 
 If you need more control over what to be available to the end user of your module <code>Exporter</code> CORE module will be a better approach.
 
-Go read the module <a href="http://perldoc.perl.org/Exporter.html">documentation</a> to have an idea of its usage.
+Go and read the module <a href="http://perldoc.perl.org/Exporter.html">documentation</a> to get an idea of its usage.
 
-You can leverage what to export into the program using your module, so no more fully qualified package name will be needed. I suggest you to no export nothing by default (ie leaving <code>@EXPORT</code> empty) using instead <code>@EXPORT_OK</code> to let the end user to import sub from your module on, explicit, request.
+You can leverage what to export into the program using your module, so no more fully qualified package name will be needed. I suggest you to not export anything by default (ie leaving <code>@EXPORT</code> empty) using instead <code>@EXPORT_OK</code> to let the end user to import subs from your module on explicit request.
 
-With the use of <code>Exporter</code> you can also export variables into the program using your module, not only subs. It's up to you to decide if this is the right thing to do. Pay attention with names you use and the risk of name collision: what will happen if two module export two function with the same name? 
+With the use of <code>Exporter</code> you can also export variables into the program using your module, not only subs. It's up to you to decide if this is the right thing to do. Pay attention with names you use and the risk of name collisions: what will happen if two modules export two functions with the same name? 
 
 Perl is not restrictive in any meaning of the word: nothing will prevent the end user of your module to call <code>Your::Module::not_exported_at_all_sub()</code> and access its functionality. A fully qualified name will be always available. The end user is breaking the API you provide, API where <code>not_exported_at_all_sub</code> is not even mentioned. 
 
@@ -2163,16 +2163,16 @@ Perl is not restrictive in any meaning of the word: nothing will prevent the end
 <a id="dayeightoptionthree"></a>
 <h4>option three - the OO module</h4>
 
-Preferred by many is the Object Oriented (OO) way. OO it's not better nor worst: it's a matter of aptitude or a matter of needs. See the relevant section on the core documentation: <a href="http://perldoc.perl.org/perlmodstyle.html#To-OO-or-not-to-OO%3f ">To-OO-or-not-OO?</a> about the choice.
+Preferred by many is the Object Oriented (OO) way. OO is not better nor worse: it's a matter of aptitude or a matter of needs. See the relevant section on the core documentation: <a href="http://perldoc.perl.org/perlmodstyle.html#To-OO-or-not-to-OO%3f ">To-OO-or-not-OO?</a> about the choice.
 
 An object is just a little data structure that knows the class (the package) it belongs to. Nothing more complex than this. The data structure is generally a hash and its consciouness of its class (package) is provided by the <code>bless</code> core function.
 
-Your API will just provide a constructor (conventionally <code>new</code>) and a serie of methods this object can use.
+Your API will just provide a constructor (conventionally <code>new</code>) and a series of methods this object can use.
 
-Again: nothing prevents end user to call one of your function by its fully qualified name as in <code>Your::Module::_not_exported_at_all_sub()</code>
+Again: nothing prevents the end user to call one of your function by its fully qualified name as in <code>Your::Module::_not_exported_at_all_sub()</code>
  it's just matter of being polite.
  
-The core documentation include some tutorial about objects:
+The core documentation includes some tutorials about objects:
 
 <a href="http://perldoc.perl.org/perlobj.html">perlobj</a>
 
@@ -2190,7 +2190,7 @@ An OO module has many advantages in particular situations but is generally a bit
 
 Until now we modified the <code>BUILD_REQUIRES</code> to specify dependencies needed while testing our module and <code>PREREQ_PM</code> to include modules needed by our module to effectively run.
 
-The file format is described in the documentation of <code>ExtUtils::MakeMaker</code>  where is stated that, since version 6.64 it is available another field: <code><code>TEST_REQUIRES</code></code> defined as: "A hash of modules that are needed to test your module but not run or build it". This is exactly what we need, but this force us to specify, also in <code>Makefile.PL</code> that we need <code>'ExtUtils::MakeMaker'  => '6.64'</code> in the <code>CONFIGURE_REQUIRES</code> hash. 
+The file format is described in the documentation of <code>ExtUtils::MakeMaker</code>  where it is stated that, since version 6.64 it is available another field: <code><code>TEST_REQUIRES</code></code> defined as: "A hash of modules that are needed to test your module but not run or build it". This is exactly what we need, but this force us to specify, also in <code>Makefile.PL</code> that we need <code>'ExtUtils::MakeMaker'  => '6.64'</code> in the <code>CONFIGURE_REQUIRES</code> hash.
 
 The 6.64 version of <code>ExtUtils::MakeMaker</code> was released in 2012 but you cannot be sure end users have some modern perl, so we can safely use <code>BUILD_REQUIRES</code> as always or use some logic to fallback to "older" functionality if <code>ExtUtils::MakeMaker</code> is too old. You can use <code>WriteMakefile1</code> sub used in the <code>Makefile.PL</code> of  <code>App::EUMM::Upgrade</code>
 
@@ -2199,15 +2199,15 @@ The 6.64 version of <code>ExtUtils::MakeMaker</code> was released in 2012 but yo
 
 In the current tutorial we used <code>Test::Exception</code> to test failures: consider also <code>Test::Fatal</code>
 
-Overkill for simple test case but useful for complex one is the module  <a href="https://metacpan.org/pod/Test::Class">Test::Class</a>
+Overkill for a simple test case but useful for complex ones is the module  <a href="https://metacpan.org/pod/Test::Class">Test::Class</a>
 
-Other modules worth to see are in the <a href="https://metacpan.org/pod/Task::Kensho#Task::Kensho::Testing:-Testing">Task::Kensho</a> list.
+Other modules worth to check out are in the <a href="https://metacpan.org/pod/Task::Kensho#Task::Kensho::Testing:-Testing">Task::Kensho</a> list.
 
 	
 <a id="dayeightadvancedtestingcode"></a>
 <h4>advanced testing code</h4>
 
-If in your tests you have the risk of code repetition (against the DRY - Dont Repeat Yourself principle) you can find handy to have a module only used in your tests, a module under the <code>/t</code> folder. 
+If in your tests you have the risk of code repetition (against the DRY - Dont Repeat Yourself principle) you can find it handy to have a module only used in your tests, a module under the <code>/t</code> folder.
 
 You need some precautions, though. 
 
@@ -2345,7 +2345,7 @@ use t::testhelper;
 <h2>acknowledgements</h2>
 
 As all my works the present tutorial would be not possible without the help of the perlmonks.org community.
-Not being an exhaustive list I want to thanks: Corion, choroba, Tux, 1nickt, marto, hippo, haukex, Eily, eyepopslikeamosquito, davido and kschwab (to be updated ;)
+Not being an exhaustive list I want to thank: Corion, choroba, Tux, 1nickt, marto, hippo, haukex, Eily, eyepopslikeamosquito, davido and kschwab (to be updated ;)
 
 </body>
 </html>
